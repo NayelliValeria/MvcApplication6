@@ -1,0 +1,59 @@
+﻿@model MvcApplication6.Models.reclutador
+@{
+    ViewBag.Title = "ConsultarCandidatos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href= "@Url.Content("~/Content/css/plugins/dataTables/dataTables.bootstrap.css")" rel="stylesheet">
+<link href= "@Url.Content("css/plugins/dataTables/dataTables.bootstrap.css")" rel="stylesheet">
+
+<div class="panel panel-default">
+    <div class="panel-heading">Candidatos</div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="candidatos">
+                <thead>
+                     <tr>
+                         <th>Nombre</th>
+                         <th>Apellido Paterno</th>
+                         <th>Apellido Materno</th>
+                         <th>CURP</th>
+                         <th>RFC</th>
+                         <th>E-mail</th>
+                         <th>Teléfono</th>
+                         <th>Tecnología</th>
+                         <th>Palabras Clave</th>
+                         <th>Fecha</th>
+                         <th></th>
+                     </tr>
+                </thead>
+                <tbody>
+                    @if(@Model.rs != null)
+                    {
+                        foreach (MvcApplication6.Models.candidato_persona candidato in @Model.rs)
+                        { 
+                            <tr>
+                                <td>@candidato.nombre</td>
+                                <td>@candidato.apePaterno</td>
+                                <td>@candidato.apeMaterno</td>
+                                <td>@candidato.CURP</td>
+                                <td>@candidato.RFC</td>
+                                <td>@candidato.email</td>
+                                <td>@candidato.telefono</td>
+                                <td>Tecnologias</td>
+                                <td>@candidato.palabrasClave</td>
+                                <td>@candidato.fecha_registro</td>
+                                <td id="id_candidato">@candidato.idCandidato</td>
+                            </tr>
+                        }
+                    }else
+                    {
+                        <tr>
+                            <td colspan="10" style="align-content:center"> No hay candidatos registrados. </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" >
+
+    <!-- Core CSS - Include with every page -->
+    <link href="@Url.Content("~/Content/css/bootstrap.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.css")" rel="stylesheet">
+
+    <!-- SB Admin CSS - Include with every page -->
+    <link href="@Url.Content("~/Content/css/sb-admin.css")" rel="stylesheet">
+    
+    <!-- Core Scripts - Include with every page -->
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/plugins/metisMenu/jquery.metisMenu.js")"></script>
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="@Url.Content("~/Scripts/sb-admin.js")"></script>
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+
+            <div class="navbar-header">
+                @Html.ActionLink("Home", "Index", "Home")
+            </div>
+
+            <!-- Sesion de usuario -->
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil de usuario </a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuración </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <i class="fa fa-sign-out fa-fw"></i>@Html.ActionLink("Cerrar Sesión", "Logout", "Sesion")
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!--Menu principal-->
+            <div class="navbar-default navbar-static-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-table fa-fw"></i> Candidatos<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li> @Html.ActionLink("Agregar", "nuevoCandidato", "Home")</li> 
+                                <li> @Html.ActionLink("Editar", "editarCandidato", "Home")</li>
+                                <li> @Html.ActionLink("Eliminar", "eliminarCandidato", "Home")</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Tecnologías<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li> @Html.ActionLink("Agregar", "agregarTecnologia", "Home")</li>
+                                <li> @Html.ActionLink("Editar", "editarTecnologia", "Home")</li>
+                                <li> @Html.ActionLink("Eliminar", "eliminarTecnologia", "Home")</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i> Reclutadores<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li> @Html.ActionLink("Agregar", "agregarReclutador", "Home")</li>
+                                <li> @Html.ActionLink("Editar", "editarReclutador", "Home")</li>
+                                <li> @Html.ActionLink("Eliminar", "eliminarReclutador", "Home")</li>
+                            </ul>
+                        </li>       
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">@ViewBag.Title</h1>
+                </div>
+            </div>
+            <div class="row">
+                @RenderSection("featured", required: false)
+                @RenderBody()
+            </div>
+        </div>
+
+    </div>
+    
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

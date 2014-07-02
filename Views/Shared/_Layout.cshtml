@@ -24,7 +24,6 @@
 </head>
 
 <body>
-
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
 
@@ -58,7 +57,8 @@
                         <li>
                             <a href="#"><i class="fa fa-table fa-fw"></i> Candidatos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li> @Html.ActionLink("Agregar", "nuevoCandidato", "Home")</li> 
+                                <li> @Html.ActionLink("Consultar", "ConsultarCandidatos", "Reclutador")</li>
+                                <li> @Html.ActionLink("Agregar", "AgregarCandidato", "Reclutador")</li> 
                                 <li> @Html.ActionLink("Editar", "editarCandidato", "Home")</li>
                                 <li> @Html.ActionLink("Eliminar", "eliminarCandidato", "Home")</li>
                             </ul>

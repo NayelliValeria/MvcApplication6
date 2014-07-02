@@ -11,22 +11,64 @@ namespace MvcApplication6.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
     
     public partial class candidato_persona
     {
         [Key]
         public int idCandidato { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [StringLength(30, ErrorMessage = "Este {0} no es valido")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Nombre")]
+        public string nombre { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [StringLength(20, ErrorMessage = "Este {0} no es valido")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Apellido paterno")]
+        public string apePaterno { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [StringLength(20, ErrorMessage = "Este {0} no es valido")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Apellido Materno")]
+        public string apeMaterno { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [StringLength(20, ErrorMessage = "Este {0} no es valido")]
+        [RegularExpression("[A-Z]{4}[0-9]{6}[H,M][A-Z]{5}[0-9]{2}$", ErrorMessage="Este no es un {0} valido")]
+        [Display(Name = "CURP")]
         public string CURP { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [StringLength(20, ErrorMessage = "Este {0} no es valido")]
+        [RegularExpression("/[A-Z]{4}[0-9]{6}[A-Z0-9]{3}$/")]
+        [Display(Name = "RFC")]
         public string RFC { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [StringLength(30, ErrorMessage = "Este {0} no es valido")]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "E-mail")]
         public string email { get; set; }
+        
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [StringLength(20, ErrorMessage = "Este {0} no es valido")]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Telefono")]
         public string telefono { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [StringLength(200, ErrorMessage = "Máximo 200 caracteres.")]
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Palabras clave")]
         public string palabrasClave { get; set; }
+
         public Nullable<System.DateTime> fecha_registro { get; set; }
         public Nullable<int> idPersona { get; set; }
         public Nullable<int> idReclutador { get; set; }
-        public string nombre { get; set; }
-        public string apePaterno { get; set; }
-        public string apeMaterno { get; set; }
+        
     }
 }

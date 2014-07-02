@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
@@ -11,7 +12,7 @@ namespace MvcApplication6.Models
     public partial class reclutador:DbContext 
     {
         public bool rememberMe { get; set; }
-        public IList<candidato_persona> rs { get; set; }
+        public IList<candidato_persona> candidatosRegistrados { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         [StringLength(10, ErrorMessage = "Este nombre de {0} no es vlaido")]
@@ -52,14 +53,6 @@ namespace MvcApplication6.Models
                 return true;
             }
             else return false;
-        }
-
-        public void ConsultarCandidatos()
-        {
-            RecluITEntities db = new RecluITEntities();
-            try { rs = db.candidato_persona.ToList(); }
-            catch (NullReferenceException) { rs = null; }
-            finally { rs = null; }
         }
     }
 }

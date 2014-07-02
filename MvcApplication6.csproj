@@ -127,6 +127,7 @@
     <Compile Include="Models\candidato_persona.cs">
       <DependentUpon>RecluIT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\candidato_persona2.cs" />
     <Compile Include="Models\ConsultarCandidatos_Result.cs">
       <DependentUpon>RecluIT.tt</DependentUpon>
     </Compile>
@@ -187,9 +188,6 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\demo\dashboard-demo.js" />
-    <Content Include="Scripts\demo\flot-demo.js" />
-    <Content Include="Scripts\demo\morris-demo.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\plugins\dataTables\dataTables.bootstrap.js" />
     <Content Include="Scripts\plugins\dataTables\jquery.dataTables.js" />
@@ -202,6 +200,7 @@
     <Content Include="Scripts\plugins\morris\morris.js" />
     <Content Include="Scripts\plugins\morris\raphael-2.1.0.min.js" />
     <Content Include="Scripts\sb-admin.js" />
+    <Content Include="Scripts\Tablas\ConsultarCandidatosTabla.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -210,41 +209,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="Content\font-awesome\less\bordered-pulled.less" />
-    <Content Include="Content\font-awesome\less\core.less" />
-    <Content Include="Content\font-awesome\less\fixed-width.less" />
-    <Content Include="Content\font-awesome\less\font-awesome.less" />
-    <Content Include="Content\font-awesome\less\icons.less" />
-    <Content Include="Content\font-awesome\less\larger.less" />
-    <Content Include="Content\font-awesome\less\list.less" />
-    <Content Include="Content\font-awesome\less\mixins.less" />
-    <Content Include="Content\font-awesome\less\path.less" />
-    <Content Include="Content\font-awesome\less\rotated-flipped.less" />
-    <Content Include="Content\font-awesome\less\spinning.less" />
-    <Content Include="Content\font-awesome\less\stacked.less" />
-    <Content Include="Content\font-awesome\less\variables.less" />
-    <Content Include="Content\font-awesome\scss\font-awesome.scss" />
-    <Content Include="Content\font-awesome\scss\_bordered-pulled.scss" />
-    <Content Include="Content\font-awesome\scss\_core.scss" />
-    <Content Include="Content\font-awesome\scss\_fixed-width.scss" />
-    <Content Include="Content\font-awesome\scss\_icons.scss" />
-    <Content Include="Content\font-awesome\scss\_larger.scss" />
-    <Content Include="Content\font-awesome\scss\_list.scss" />
-    <Content Include="Content\font-awesome\scss\_mixins.scss" />
-    <Content Include="Content\font-awesome\scss\_path.scss" />
-    <Content Include="Content\font-awesome\scss\_rotated-flipped.scss" />
-    <Content Include="Content\font-awesome\scss\_spinning.scss" />
-    <Content Include="Content\font-awesome\scss\_stacked.scss" />
-    <Content Include="Content\font-awesome\scss\_variables.scss" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -282,6 +246,44 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Reclutador\ConsultarCandidatos.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\font-awesome\less\core.less" />
+    <Content Include="Content\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\font-awesome\less\icons.less" />
+    <Content Include="Content\font-awesome\less\larger.less" />
+    <Content Include="Content\font-awesome\less\list.less" />
+    <Content Include="Content\font-awesome\less\mixins.less" />
+    <Content Include="Content\font-awesome\less\path.less" />
+    <Content Include="Content\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\font-awesome\less\spinning.less" />
+    <Content Include="Content\font-awesome\less\stacked.less" />
+    <Content Include="Content\font-awesome\less\variables.less" />
+    <Content Include="Content\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\font-awesome\scss\_core.scss" />
+    <Content Include="Content\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\font-awesome\scss\_list.scss" />
+    <Content Include="Content\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\font-awesome\scss\_path.scss" />
+    <Content Include="Content\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\font-awesome\scss\_spinning.scss" />
+    <Content Include="Content\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Reclutador\AgregarCandidato.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

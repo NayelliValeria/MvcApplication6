@@ -10,24 +10,20 @@ namespace MvcApplication6.Controllers
 {
     public class ReclutadorController : Controller
     {
+        public List<string> tecnologiasList { get; set; }
         RecluITEntities db = new RecluITEntities();
 
-        public ActionResult ConsultarCandidatos( reclutador rec)
-        {
-            return View(db.candidato_persona.Where(b => b.idReclutador == rec.idReclutador).ToList());
-        }
+        //Por administrador
+        public void Create() { }
 
-        public ActionResult AgregarCandidato()
-        {
-            return View();
-        }
+        public void Details() { }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AgregarCandidato( candidato_persona can)
-        {
-            candidato_persona nuevo = new candidato_persona();
-            return View(can);
-        }
+        public void Delete() { }
+
+        public void Edit() { }
+
+        //Por reclutador
+        public void changePassword() { }
+        public void changeData() { }
     }
 }

@@ -1,6 +1,7 @@
-﻿
+﻿@model MvcApplication6.Models.candidato
+
 @{
-    ViewBag.Title = "ConsultarCandidatos";
+    ViewBag.Title = "Consultar Candidatos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -31,20 +32,20 @@
                 <tbody>
                     @try
                     {
-                        foreach(var candidato in Model)
+                        foreach(var can in ViewBag.candidatos)
                         { 
                             <tr>
-                                <td>@candidato.nombre</td>
-                                <td>@candidato.apePaterno</td>
-                                <td>@candidato.apeMaterno</td>
-                                <td>@candidato.CURP</td>
-                                <td>@candidato.RFC</td>
-                                <td>@candidato.email</td>
-                                <td>@candidato.telefono</td>
+                                <td>@can.persona.nombre</td>
+                                <td>@can.persona.apePaterno</td>
+                                <td>@can.persona.apeMaterno</td>
+                                <td>@can.CURP</td>
+                                <td>@can.RFC</td>
+                                <td>@can.email</td>
+                                <td>@can.telefono</td>
                                 <td>Tecnologias</td>
-                                <td>@candidato.palabrasClave</td>
-                                <td>@candidato.fecha_registro</td>
-                                <td id="id_candidato">@candidato.idCandidato</td>
+                                <td>@can.palabrasClave</td>
+                                <td>@can.fecha_registro</td>
+                                <td id="id_candidato">@can.idCandidato</td>
                             </tr>
                         }
                     }

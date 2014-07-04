@@ -11,9 +11,11 @@ namespace MvcApplication6.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class reclutador
     {
+        [Key]
         public int idReclutador { get; set; }
         public int idPersona { get; set; }
         public Nullable<int> permisos { get; set; }

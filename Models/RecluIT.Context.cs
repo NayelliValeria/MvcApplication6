@@ -24,7 +24,11 @@ namespace MvcApplication6.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            modelBuilder.Entity<reclutador>().HasRequired(x => x.persona);
+            modelBuilder.Entity<candidato>().HasRequired(x => x.persona);
+            modelBuilder.Entity<candidato>().HasRequired(x => x.reclutador);
+            modelBuilder.Entity<candidato>().HasMany(x => x.tecnologia).WithMany();
+            //throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<candidato> candidato { get; set; }

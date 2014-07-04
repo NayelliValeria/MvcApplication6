@@ -21,10 +21,14 @@ namespace MvcApplication6.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(reclutador rec)
         {
-            if (rec.usuario != null && rec.password != null && rec.validar(rec.usuario, rec.password))
+            rec = rec.validar(rec.usuario, rec.password);
+            if (rec!=null)
             {
                 FormsAuthentication.SetAuthCookie(rec.usuario, rec.rememberMe);
-                return RedirectToAction("ConsultarCandidatos", "Reclutador", rec);
+                Session["idReclutador"] = rec.idReclutador;
+                Session["nombre"] = rec.persona.nombre;
+                Session["apellidos"] = "" + rec.persona.apePaterno + " " + rec.persona.apeMaterno;
+                return RedirectToAction("ConsultarCandidatos", "Candidato", rec);
             }
             ModelState.AddModelError("", "El usuario y/o contraseña son incorrectos.");
             return View();

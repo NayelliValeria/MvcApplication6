@@ -11,6 +11,7 @@ namespace MvcApplication6.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class persona
     {
@@ -20,9 +21,25 @@ namespace MvcApplication6.Models
             this.reclutador = new HashSet<reclutador>();
         }
     
+        [Key]
         public int idPersona { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [StringLength(30, ErrorMessage = "Este {0} no es valido")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Nombre")]
         public string nombre { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [StringLength(20, ErrorMessage = "Este {0} no es valido")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Apellido paterno")]
         public string apePaterno { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [StringLength(20, ErrorMessage = "Este {0} no es valido")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Apellido Materno")]
         public string apeMaterno { get; set; }
     
         public virtual ICollection<candidato> candidato { get; set; }

@@ -69,6 +69,32 @@ using System.ComponentModel.DataAnnotations;
         public Nullable<System.DateTime> fecha_registro { get; set; }
         public Nullable<int> idPersona { get; set; }
         public Nullable<int> idReclutador { get; set; }
-        
+
+
+        private void generarIDCandidato()
+        {
+            RecluITEntities db = new RecluITEntities();
+            var max = db.Database.SqlQuery<int>("SELECT MAX(idCandidato) FROM candidato");
+            if (max == null)
+                this.idCandidato = 1;
+            else
+                foreach (int v in max)
+                    this.idCandidato = v+1;
+        }
+
+        private void generarIDPersona()
+        {
+            RecluITEntities db = new RecluITEntities();
+            var max = db.Database.SqlQuery<int>("SELECT MAX(idPersona) FROM persona");
+            foreach (int v in max)
+                this.idPersona = v + 1;
+        }
+
+        public void setIDs(int idRec)
+        {
+            generarIDCandidato();
+            generarIDPersona();
+            this.idReclutador = idRec;
+        }
     }
 }

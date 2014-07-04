@@ -11,6 +11,8 @@ namespace MvcApplication6.Models
 {
     public partial class reclutador:DbContext 
     {
+        RecluITEntities db = new RecluITEntities();
+
         public bool rememberMe { get; set; }
         public IList<candidato_persona> candidatosRegistrados { get; set; }
 
@@ -29,6 +31,21 @@ namespace MvcApplication6.Models
         //<param name = "user"> nombre de usuario </param>
         //<param name = "pass"> contraseña del usuario </param>
         //<returns> true si es correcto, false en caso contrario </returns>
+        public reclutador validar(string user, string pass)
+        {
+            try
+            {
+                reclutador rec = db.reclutador
+                .Where(b => b.usuario == user)
+                .Where(b => b.password == pass)
+                .Include("persona").Single();
+                return rec;
+            }
+            catch (Exception) { return null;  }
+        }
+        
+        
+        /*
         public bool validar(string user, string pass)
         {
             RecluITEntities db = new RecluITEntities();
@@ -53,6 +70,6 @@ namespace MvcApplication6.Models
                 return true;
             }
             else return false;
-        }
+        }*/
     }
 }

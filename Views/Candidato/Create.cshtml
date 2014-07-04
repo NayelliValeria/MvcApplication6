@@ -1,4 +1,4 @@
-﻿@model MvcApplication6.Models.candidato_persona
+﻿@model MvcApplication6.Models.candidato
 
 @{
     ViewBag.Title = "AgregarCandidato";
@@ -15,7 +15,7 @@
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true)
+                            @Html.ValidationSummary(true, "Campos con valores no validos.")
                              <form role="form">
                                  <div class="form-group">
                                      @Html.LabelFor(model => model.CURP)
@@ -23,19 +23,19 @@
                                      @Html.ValidationMessageFor(model => model.CURP)
                                  </div>
                                  <div class="form-group">
-                                     @Html.LabelFor(model => model.nombre)
-                                     @Html.TextBoxFor(model => model.nombre, new { @class = "form-control" })
-                                     @Html.ValidationMessageFor(model => model.nombre)
+                                     @Html.LabelFor(model => model.persona.nombre)
+                                     @Html.TextBoxFor(model => model.persona.nombre, new { @class = "form-control" })
+                                     @Html.ValidationMessageFor(model => model.persona.nombre)
                                  </div>
                                  <div class="form-group">
-                                     @Html.LabelFor(model => model.apePaterno)
-                                     @Html.TextBoxFor(model => model.apePaterno, new { @class = "form-control" })
-                                     @Html.ValidationMessageFor(model => model.apePaterno)
+                                     @Html.LabelFor(model => model.persona.apePaterno)
+                                     @Html.TextBoxFor(model => model.persona.apePaterno, new { @class = "form-control" })
+                                     @Html.ValidationMessageFor(model => model.persona.apePaterno)
                                  </div>
                                  <div class="form-group">
-                                     @Html.LabelFor(model => model.apeMaterno)
-                                     @Html.TextBoxFor(model => model.apeMaterno, new { @class = "form-control" })
-                                     @Html.ValidationMessageFor(model => model.apeMaterno)
+                                     @Html.LabelFor(model => model.persona.apeMaterno)
+                                     @Html.TextBoxFor(model => model.persona.apeMaterno, new { @class = "form-control" })
+                                     @Html.ValidationMessageFor(model => model.persona.apeMaterno)
                                  </div>
                                  <div class="form-group">
                                      @Html.LabelFor(model => model.RFC)
@@ -54,18 +54,19 @@
                                  </div>
                                  <div class="form-group">
                                      <label>Tecnologías</label>
-                                     <div class="checkbox">
-                                         <label>
-                                             <input type="checkbox" value="">Checkbox 1
-                                         </label>
-                                     </div>
-                                     <div class="checkbox">
-                                         <label>
-                                             <input type="checkbox" value="">Checkbox 1
-                                         </label>
-                                     </div>
+                                      @{
+                                          List<MvcApplication6.Models.tecnologiaCandidato> tecs =  ViewBag.tecnologias;
+                                          foreach (var t in tecs)
+                                          {
+                                              <div class="checkbox">
+                                                  <label>
+                                                      <input type="checkbox" name="tecnologiasList" value="@t.idTecnologia"
+                                                          @(Html.Raw( t.domina ? "checked=\"checked\"" : "")) />)@t.nombreTecnologia
+                                                  </label>
+                                              </div>
+                                          } 
+                                      }
                                  </div>
-
                                  <div class="form-group">
                                      @Html.LabelFor(model => model.palabrasClave)
                                      @Html.TextAreaFor(model => model.palabrasClave, new { @class = "form-control" })

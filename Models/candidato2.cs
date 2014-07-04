@@ -22,7 +22,7 @@ namespace MvcApplication6.Models
             catch (InvalidOperationException)
             {
                 this.idCandidato = 1;
-                this.idPersona = 1;
+                this.idPersona = this.persona.idPersona = 1;
             }
         }
         

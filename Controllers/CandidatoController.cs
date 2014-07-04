@@ -37,6 +37,7 @@ namespace MvcApplication6.Controllers
         {
             try
             {
+                marcarTecnologias(null);
                 if (ModelState.IsValid)
                 {
                     nuevo.idReclutador = (int)Session["idReclutador"];
@@ -58,7 +59,6 @@ namespace MvcApplication6.Controllers
             {
                 Console.WriteLine("Error: " + e.Message);
                 ModelState.AddModelError("", "Ha ocurrido un error al guardar los datos, por favor intente nuevamente.");
-                marcarTecnologias(null);
                 return View();
             }
         }

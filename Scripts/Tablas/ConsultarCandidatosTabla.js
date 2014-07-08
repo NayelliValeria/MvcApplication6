@@ -1,8 +1,8 @@
 ﻿
 $(document).ready(function () {
-
+    //Inicializar tabla
     $('#candidatos').dataTable({
-        "paginate": true,
+        "paging": true,
         "paginateType": "full_numbers",
         "language": {
             "search": "Buscar:",
@@ -18,16 +18,6 @@ $(document).ready(function () {
             "info": "Mostrando _PAGE_ de _PAGES_ resultados"
         },
         "columnDefs": [
-              { "searchable": true },
-              { "searchable": true },
-              { "searchable": true },
-              { "searchable": true },
-              { "searchable": true },
-              { "searchable": true },
-              { "searchable": true },
-              { "searchable": true },
-              { "searchable": true },
-              { "searchable": true },
               { "targets":[10], "visible": false, "searchable": false }
         ],
         "aaSorting": [[0, "asc"]],
@@ -37,5 +27,30 @@ $(document).ready(function () {
         "bFilter": true,
         "bSort": true
     });
+    
+    var table = $('#candidatos').dataTable();
+
+    //Ocultar y mostrar columnas
+    $('a.toogle-vis').on('click', function (e) {
+        window.alert("visibility: " + column.visible());
+        e.preventDefault();
+        var column = table.column($(this).attr('data-column'));
+        column.visible(!column.visible());
+    });
+    
+    var idCandidato = null;
+    //Seleccionar fila-candidato
+    $("#candidatos tbody").on('click', 'tr', function () {
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+            idCandidato = null;
+        } else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    });
+
+    //Editar
+    //$("#editarCandidato").on('click', function () { });
     
 });	//end function

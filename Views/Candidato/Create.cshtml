@@ -61,7 +61,7 @@
                                               <div class="checkbox">
                                                   <label>
                                                       <input type="checkbox" name="tecnologiasList" value="@t.idTecnologia"
-                                                          @(Html.Raw( t.domina ? "checked=\"checked\"" : "")) />)@t.nombreTecnologia
+                                                          @Html.Raw( t.domina ? "checked=\"checked\"" : "") />@t.nombreTecnologia
                                                   </label>
                                               </div>
                                           } 

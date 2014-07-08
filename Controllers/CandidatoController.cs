@@ -20,11 +20,6 @@ namespace MvcApplication6.Controllers
             return View();
         }
 
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         public ActionResult Create()
         {
             marcarTecnologias(null);
@@ -33,7 +28,7 @@ namespace MvcApplication6.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(candidato nuevo, string[] tecs, FormCollection collection)
+        public ActionResult Create(candidato nuevo, string[] tecnologiasList, FormCollection collection)
         {
             try
             {
@@ -42,7 +37,7 @@ namespace MvcApplication6.Controllers
                 {
                     nuevo.idReclutador = (int)Session["idReclutador"];
                     nuevo.setIds();
-                    asignarTecnologias(tecs, nuevo);
+                    nuevo = asignarTecnologias(tecnologiasList, nuevo);
                     db.Entry(nuevo).State = EntityState.Added;
                     db.SaveChanges();
                     return RedirectToAction("ConsultarCandidatos");
@@ -63,12 +58,12 @@ namespace MvcApplication6.Controllers
             }
         }
 
-        private void asignarTecnologias( string[] seleccionadas, candidato candidato) 
+        private candidato asignarTecnologias( string[] seleccionadas, candidato candidato) 
         {
             if(seleccionadas == null)
             {
                 candidato.tecnologia = new List<tecnologia>();
-                return;
+                return candidato;
             }
             var tSeleccionadas = new HashSet<string>(seleccionadas);
             var candTecs = new HashSet<int>(candidato.tecnologia.Select( t=>t.idTecnologia));
@@ -86,6 +81,7 @@ namespace MvcApplication6.Controllers
                         candidato.tecnologia.Remove(tec);
                 }
             }
+            return candidato;
         }
 
         public ActionResult Edit(int id)

@@ -9,54 +9,59 @@
 <script src="@Url.Content("~/Scripts/plugins/dataTables/jquery.dataTables.js")"></script>
 <script src="@Url.Content("~/Scripts/Tablas/ConsultarCandidatosTabla.js")"></script>
 
-<div class="panel panel-default">
-    <div class="panel-heading"> Sus candidatos. </div>
-    <div class="panel-body">
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover" id="candidatos">
-                <thead>
-                     <tr>
-                         <th>Nombre</th>
-                         <th>Apellido Paterno</th>
-                         <th>Apellido Materno</th>
-                         <th>CURP</th>
-                         <th>RFC</th>
-                         <th>E-mail</th>
-                         <th>Teléfono</th>
-                         <th>Tecnología</th>
-                         <th>Palabras Clave</th>
-                         <th>Fecha</th>
-                         <th></th>
-                     </tr>
-                </thead>
-                <tbody>
-                    @try
-                    {
-                        foreach(var can in ViewBag.candidatos)
-                        { 
-                            <tr>
-                                <td>@can.persona.nombre</td>
-                                <td>@can.persona.apePaterno</td>
-                                <td>@can.persona.apeMaterno</td>
-                                <td>@can.CURP</td>
-                                <td>@can.RFC</td>
-                                <td>@can.email</td>
-                                <td>@can.telefono</td>
-                                <td>Tecnologias</td>
-                                <td>@can.palabrasClave</td>
-                                <td>@can.fecha_registro</td>
-                                <td id="id_candidato">@can.idCandidato</td>
-                            </tr>
-                        }
-                    }
-                    catch (NullReferenceException)
-                    {
-                    } 
-                    catch( Exception)
-                    {
-                    } 
-                </tbody>
-            </table>
-        </div>
+<div class="table-responsive">
+    <div class="ocultarColumnas">
+        Información disponible:  
+        <a class="toogle-vis" href="javascript:void(0)">Nombre</a> 
+        <a class="toogle-vis" href="javascript:void(0)">Apellido Paterno</a> 
     </div>
+    <table class="table table-striped table-bordered table-hover" id="candidatos">
+        <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>CURP</th>
+                    <th>RFC</th>
+                    <th>E-mail</th>
+                    <th>Teléfono</th>
+                    <th>Tecnología</th>
+                    <th>Palabras Clave</th>
+                    <th>Fecha</th>
+                    <th>id_candidato</th>
+                </tr>
+        </thead>
+        <tbody>
+            @try
+            {
+                foreach(var can in ViewBag.candidatos)
+                { 
+                    <tr>
+                        <td>@can.persona.nombre</td>
+                        <td>@can.persona.apePaterno</td>
+                        <td>@can.persona.apeMaterno</td>
+                        <td>@can.CURP</td>
+                        <td>@can.RFC</td>
+                        <td>@can.email</td>
+                        <td>@can.telefono</td>
+                        <td>
+                            @foreach(MvcApplication6.Models.tecnologia tec in @can.tecnologia)
+                            {
+                                @tec.nombre<br />
+                            }
+                        </td>
+                        <td>@can.palabrasClave</td>
+                        <td>@can.fecha_registro</td>
+                        <td id="id_candidato">@can.idCandidato</td>
+                    </tr>
+                }
+            }
+            catch (NullReferenceException)
+            {
+            } 
+            catch( Exception)
+            {
+            } 
+        </tbody>
+    </table>
 </div>

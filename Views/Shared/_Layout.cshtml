@@ -44,7 +44,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <i class="fa fa-sign-out fa-fw"></i>@Html.ActionLink("Cerrar Sesión", "Logout", "Sesion")
+                            <i class="fa fa-sign-out fa-fw"></i>@Html.ActionLink("Salir", "Logout", "Sesion")
                         </li>
                     </ul>
                 </li>
@@ -59,7 +59,7 @@
                             <ul class="nav nav-second-level">
                                 <li> @Html.ActionLink("Consultar", "ConsultarCandidatos", "Candidato")</li>
                                 <li> @Html.ActionLink("Agregar", "Create", "Candidato")</li> 
-                                <li> @Html.ActionLink("Editar", "editarCandidato", "Home")</li>
+                                <li> <a href="#" id="editarCandidato">Editar</a></li>
                                 <li> @Html.ActionLink("Eliminar", "eliminarCandidato", "Home")</li>
                             </ul>
                         </li>

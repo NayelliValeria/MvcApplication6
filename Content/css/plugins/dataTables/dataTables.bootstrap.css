@@ -46,6 +46,15 @@ table.dataTable {
     max-width: none !important;
 }
 
+table.dataTable thead{
+    font-size:12px;
+    background-color: #e3e4e6;}
+
+table.dataTable thead th {
+    vertical-align:middle;
+    text-align:center;
+}
+
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc,
@@ -108,126 +117,34 @@ div.dataTables_scrollFoot table {
     border-top: none;
 }
 
-/*
- * TableTools styles
- */
+/**********************************************/
 
-.table tbody tr.active td,
-.table tbody tr.active th {
-    color: white;
-    background-color: #08C;
+table.dataTable tbody tr.selected,
+table.dataTable tbody tr.even.selected:hover,
+table.dataTable tbody tr.odd.selected,
+table.dataTable tbody tr.odd.selected:hover {
+  background-color: #7299ca;
+}
+table.dataTable tbody tr.odd {
+    background-color: #f9f9f9;
 }
 
-.table tbody tr.active:hover td,
-.table tbody tr.active:hover th {
-    background-color: #0075b0 !important;
+table.dataTable tbody tr:hover,
+table.dataTable tbody tr.odd:hover,
+table.dataTable tbody tr.even:hover,
+table.dataTable.display tbody tr:hover,
+table.dataTable.display tbody tr.odd:hover,
+table.dataTable.display tbody tr.even:hover{
+  background-color: #f0f4fc;
 }
 
-.table tbody tr.active a {
-    color: white;
+#candidatos_wrapper{
+    max-width:768px;
+    overflow-x:auto;
 }
 
-.table-striped tbody tr.active:nth-child(odd) td,
-.table-striped tbody tr.active:nth-child(odd) th {
-    background-color: #017ebc;
-}
-
-table.DTTT_selectable tbody tr {
-    cursor: pointer;
-}
-
-div.DTTT .btn {
-    font-size: 12px;
-    color: #333 !important;
-}
-
-div.DTTT .btn:hover {
-    text-decoration: none !important;
-}
-
-ul.DTTT_dropdown.dropdown-menu {
-    z-index: 2003;
-}
-
-ul.DTTT_dropdown.dropdown-menu a {
-    color: #333 !important; /* needed only when demo_page.css is included */
-}
-
-ul.DTTT_dropdown.dropdown-menu li {
-    position: relative;
-}
-
-ul.DTTT_dropdown.dropdown-menu li:hover a {
-    color: white !important;
-    background-color: #0088cc;
-}
-
-div.DTTT_collection_background {
-    z-index: 2002;
-}
-
-/* TableTools information display */
-
-div.DTTT_print_info.modal {
-    height: 150px;
-    margin-top: -75px;
-    text-align: center;
-}
-
-div.DTTT_print_info h6 {
-    margin: 1em;
-    font-size: 28px;
-    font-weight: normal;
-    line-height: 28px;
-}
-
-div.DTTT_print_info p {
-    font-size: 14px;
-    line-height: 20px;
-}
-
-/*
- * FixedColumns styles
- */
-
-div.DTFC_LeftHeadWrapper table,
-div.DTFC_LeftFootWrapper table,
-div.DTFC_RightHeadWrapper table,
-div.DTFC_RightFootWrapper table,
-table.DTFC_Cloned tr.even {
-    background-color: white;
-}
-
-div.DTFC_RightHeadWrapper table,
-div.DTFC_LeftHeadWrapper table {
-    margin-bottom: 0 !important;
-    border-top-right-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-}
-
-div.DTFC_RightHeadWrapper table thead tr:last-child th:first-child,
-div.DTFC_RightHeadWrapper table thead tr:last-child td:first-child,
-div.DTFC_LeftHeadWrapper table thead tr:last-child th:first-child,
-div.DTFC_LeftHeadWrapper table thead tr:last-child td:first-child {
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-}
-
-div.DTFC_RightBodyWrapper table,
-div.DTFC_LeftBodyWrapper table {
-    margin-bottom: 0 !important;
-    border-top: none;
-}
-
-div.DTFC_RightBodyWrapper tbody tr:first-child th,
-div.DTFC_RightBodyWrapper tbody tr:first-child td,
-div.DTFC_LeftBodyWrapper tbody tr:first-child th,
-div.DTFC_LeftBodyWrapper tbody tr:first-child td {
-    border-top: none;
-}
-
-div.DTFC_RightFootWrapper table,
-div.DTFC_LeftFootWrapper table {
-    border-top: none;
+#candidatos_length ,#candidatos_filter{
+    padding: 5px;
+    width:auto;
+    float:right;
 }

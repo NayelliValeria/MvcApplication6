@@ -15,13 +15,19 @@ namespace MvcApplication6.Models
             try
             {
                 this.idCandidato = db.candidato.Max(b => b.idCandidato) > 0 ? db.candidato.Max(b => b.idCandidato) + 1 : 1;
-                this.idPersona = db.persona.Max(b => b.idPersona) > 0 ? db.persona.Max(b => b.idPersona) + 1 : 1;
                 //this.idCandidato = db.candidato.Max(b => b.idCandidato) + 1;
                 //this.idPersona = db.persona.Max(b => b.idPersona) + 1;
             }
             catch (InvalidOperationException)
             {
                 this.idCandidato = 1;
+            }
+            try 
+            {
+                this.idPersona = this.persona.idPersona = db.persona.Max(b => b.idPersona) > 0 ? db.persona.Max(b => b.idPersona) + 1 : 1;
+            }
+            catch (InvalidOperationException)
+            {
                 this.idPersona = this.persona.idPersona = 1;
             }
         }

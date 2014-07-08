@@ -11,6 +11,7 @@ namespace MvcApplication6.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class tecnologia
     {
@@ -19,6 +20,7 @@ namespace MvcApplication6.Models
             this.candidato = new HashSet<candidato>();
         }
     
+        [Key]
         public int idTecnologia { get; set; }
         public string nombre { get; set; }
     

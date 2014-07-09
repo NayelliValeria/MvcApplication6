@@ -139,7 +139,7 @@ table.dataTable.display tbody tr.even:hover{
 }
 
 #candidatos_wrapper{
-    max-width:768px;
+    max-width:770px;
     overflow-x:auto;
 }
 
@@ -147,4 +147,8 @@ table.dataTable.display tbody tr.even:hover{
     padding: 5px;
     width:auto;
     float:right;
+}
+
+#candidatos{
+    table-layout:fixed;
 }

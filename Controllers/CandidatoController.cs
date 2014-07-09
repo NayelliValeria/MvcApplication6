@@ -84,6 +84,8 @@ namespace MvcApplication6.Controllers
             return candidato;
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id)
         {
             return View();

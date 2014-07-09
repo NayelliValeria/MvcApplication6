@@ -188,10 +188,12 @@
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\css\multiple-select.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\plugins\dataTables\dataTables.bootstrap.js" />
     <Content Include="Scripts\plugins\dataTables\jquery.dataTables.js" />
     <Content Include="Scripts\plugins\flot\excanvas.min.js" />
@@ -199,6 +201,7 @@
     <Content Include="Scripts\plugins\flot\jquery.flot.pie.js" />
     <Content Include="Scripts\plugins\flot\jquery.flot.resize.js" />
     <Content Include="Scripts\plugins\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="Scripts\plugins\jquery.multiple.select.js" />
     <Content Include="Scripts\plugins\metisMenu\jquery.metisMenu.js" />
     <Content Include="Scripts\plugins\morris\morris.js" />
     <Content Include="Scripts\plugins\morris\raphael-2.1.0.min.js" />
@@ -290,6 +293,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Candidato\ConsultarCandidatos.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Candidato\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

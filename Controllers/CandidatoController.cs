@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -88,7 +89,13 @@ namespace MvcApplication6.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id)
         {
-            return View();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var candidato = db.candidato.Where(b => b.idCandidato == id)
+                .Include(b => b.tecnologia)
+                .Include(b => b.persona)
+                .Single();
+            return View(candidato);
         }
 
         private void marcarTecnologias(candidato candidato)

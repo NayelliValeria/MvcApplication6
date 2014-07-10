@@ -21,12 +21,13 @@ namespace MvcApplication6.Controllers
             return View();
         }
 
+
+        //Nuevo candidato
         public ActionResult Create()
         {
             marcarTecnologias(null);
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(candidato nuevo, string[] tecnologiasList, FormCollection collection)
@@ -49,8 +50,6 @@ namespace MvcApplication6.Controllers
                     return View();
                 }
             }
-            /*catch (ArgumentException)
-            { }*/
             catch (Exception e)
             {
                 Console.WriteLine("Error: " + e.Message);
@@ -59,79 +58,30 @@ namespace MvcApplication6.Controllers
             }
         }
 
-        private candidato asignarTecnologias( string[] seleccionadas, candidato candidato) 
-        {
-            if(seleccionadas == null)
-            {
-                candidato.tecnologia = new List<tecnologia>();
-                return candidato;
-            }
-            var tSeleccionadas = new HashSet<string>(seleccionadas);
-            var candTecs = new HashSet<int>(candidato.tecnologia.Select( t=>t.idTecnologia));
-            if(candTecs == null)
-                candTecs = new HashSet<int>();
-            foreach( var tec in db.tecnologia)
-            {
-                if( tSeleccionadas.Contains(tec.idTecnologia.ToString()) )//Si está seleccionada
-                {
-                    if( !candTecs.Contains(tec.idTecnologia) )//si aún no la tiene registrada, se agrega
-                        candidato.tecnologia.Add(tec);
-                }else //Si no está seleccionada
-                {
-                    if(candTecs.Contains(tec.idTecnologia))//Si la tiene registrada, se elimina
-                        candidato.tecnologia.Remove(tec);
-                }
-            }
-            return candidato;
-        }
-
+       //Editar candidato
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int ide)
         {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            int id = Convert.ToInt16(ide);
             var candidato = db.candidato.Where(b => b.idCandidato == id)
+            .Include(b => b.tecnologia)
+            .Include(b => b.persona)
+            .Single();
+            return View(candidato);
+            /*
+            try
+            {
+                int id = Convert.ToInt16(ide);
+                var candidato = db.candidato.Where(b => b.idCandidato == id)
                 .Include(b => b.tecnologia)
                 .Include(b => b.persona)
                 .Single();
-            return View(candidato);
+                return View(candidato);
+            }
+            catch { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }*/
         }
 
-        private void marcarTecnologias(candidato candidato)
-        {
-            var todasTecnologias = db.tecnologia;
-            var tecnologiaCandidato =new HashSet<int>();
-            if (candidato != null)
-                tecnologiaCandidato = new HashSet<int>(candidato.tecnologia.Select(t => t.idTecnologia));
-            var chbox = new List<tecnologiaCandidato>();
-            foreach( var tecnologia in todasTecnologias)
-            {
-                chbox.Add(new tecnologiaCandidato
-                {
-                    idTecnologia = tecnologia.idTecnologia,
-                    nombreTecnologia = tecnologia.nombre,
-                    domina = tecnologiaCandidato.Contains( tecnologia.idTecnologia)
-                });
-            }
-            ViewBag.tecnologias = chbox;
-        }
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
+        //Eliminar candidato
         public ActionResult Delete(int id)
         {
             return View();
@@ -152,16 +102,51 @@ namespace MvcApplication6.Controllers
             }
         }
 
-        private void agregarTecnologiasCandidato(string[] tecs, int idCandidato)
+        //Agregar tecnologias
+        private candidato asignarTecnologias(string[] seleccionadas, candidato candidato)
         {
-            if (tecs == null)
+            if (seleccionadas == null)
             {
-                //Mandar mensaje de error
+                candidato.tecnologia = new List<tecnologia>();
+                return candidato;
             }
-            foreach (string s in tecs)
+            var tSeleccionadas = new HashSet<string>(seleccionadas);
+            var candTecs = new HashSet<int>(candidato.tecnologia.Select(t => t.idTecnologia));
+            if (candTecs == null)
+                candTecs = new HashSet<int>();
+            foreach (var tec in db.tecnologia)
             {
-                Console.WriteLine("elemento:" + s);
+                if (tSeleccionadas.Contains(tec.idTecnologia.ToString()))//Si está seleccionada
+                {
+                    if (!candTecs.Contains(tec.idTecnologia))//si aún no la tiene registrada, se agrega
+                        candidato.tecnologia.Add(tec);
+                }
+                else //Si no está seleccionada
+                {
+                    if (candTecs.Contains(tec.idTecnologia))//Si la tiene registrada, se elimina
+                        candidato.tecnologia.Remove(tec);
+                }
             }
+            return candidato;
+        }
+        //actualizar tecnologias
+        private void marcarTecnologias(candidato candidato)
+        {
+            var todasTecnologias = db.tecnologia;
+            var tecnologiaCandidato =new HashSet<int>();
+            if (candidato != null)
+                tecnologiaCandidato = new HashSet<int>(candidato.tecnologia.Select(t => t.idTecnologia));
+            var chbox = new List<tecnologiaCandidato>();
+            foreach( var tecnologia in todasTecnologias)
+            {
+                chbox.Add(new tecnologiaCandidato
+                {
+                    idTecnologia = tecnologia.idTecnologia,
+                    nombreTecnologia = tecnologia.nombre,
+                    domina = tecnologiaCandidato.Contains( tecnologia.idTecnologia)
+                });
+            }
+            ViewBag.tecnologias = chbox;
         }
     }
 }

@@ -32,7 +32,7 @@ $(document).ready(function () {
         "bSort": true
     });
         
-    var idCandidato = null;
+    
     //Seleccionar fila-candidato
     $("#candidatos tbody").delegate('tr', 'click', function () {
         if ($(this).hasClass('selected')) {
@@ -53,12 +53,34 @@ $(document).ready(function () {
             window.alert("Seleccionar un candidato");
         else
         {
-            window.alert("Editaré a un candidato id" + idCandidato);
+            document.getElementById('idCandidato').value = idCandidato;
+            editarCandidato();
         }
     });
 
+    //Enviar id para editar
+    function editarCandidato() {
+        $.post('/Candidato/Edit', { id: idCandidato });
+        /*$.ajax({
+            type: "POST",
+            url: '/Candidato/Edit',
+            data: '{"id:"' + idCandidato+'"}"',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (resultado) {
+                alert(resultado);
+            },
+            error: function (response, texStatus, errorThrown) {
+                if (errorThrown != '')
+                    alert("Error: " + errorThrown + " " + response + " " + texStatus);
+                else
+                    alert("Error: " + response.resonseText + " " + texStatus);
+            }
+        });
+        return false;*/
+    }
     
-
+    //Mostrar y ocultar columnas
     $('#mostrar_ocultar').change(function () {
         var seleccionados = $('#mostrar_ocultar').multipleSelect('getSelects');
         for (var j = 0; j < 10; j++) {
@@ -72,6 +94,7 @@ $(document).ready(function () {
 
 });	//end function
 
+//Buscar elemento en array
 function inArray( a, array)
 {
     for (var i = 0; i < array.length; i++)

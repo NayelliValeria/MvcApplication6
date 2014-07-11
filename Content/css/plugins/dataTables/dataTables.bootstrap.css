@@ -139,8 +139,7 @@ table.dataTable.display tbody tr.even:hover{
 }
 
 #candidatos_wrapper{
-    max-width:770px;
-    overflow-x:auto;
+    width:800px;
 }
 
 #candidatos_length ,#candidatos_filter{

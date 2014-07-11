@@ -390,7 +390,8 @@
 
         setSelects: function (values) {
             var that = this;
-            this.$selectItems.prop('checked', false);
+            if (this.$selectItems!=null)
+                this.$selectItems.prop('checked', false);
             $.each(values, function (i, value) {
                 that.$selectItems.filter('[value="' + value + '"]').prop('checked', true);
             });

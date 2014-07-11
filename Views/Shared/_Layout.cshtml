@@ -59,24 +59,20 @@
                             <ul class="nav nav-second-level">
                                 <li> @Html.ActionLink("Consultar", "ConsultarCandidatos", "Candidato")</li>
                                 <li> @Html.ActionLink("Agregar", "Create", "Candidato")</li> 
-                                <li> <a href="#" id="editarCandidato">Editar</a></li>
-                                <li> @Html.ActionLink("Eliminar", "eliminarCandidato", "Home")</li>
                             </ul>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Tecnologías<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+                                <li> @Html.ActionLink("Consultar", "ConsultarTecnologias", "Home")</li>
                                 <li> @Html.ActionLink("Agregar", "agregarTecnologia", "Home")</li>
-                                <li> @Html.ActionLink("Editar", "editarTecnologia", "Home")</li>
-                                <li> @Html.ActionLink("Eliminar", "eliminarTecnologia", "Home")</li>
                             </ul>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i> Reclutadores<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+                                <li> @Html.ActionLink("Consultar", "ConsultarReclutadores", "Home")</li>
                                 <li> @Html.ActionLink("Agregar", "agregarReclutador", "Home")</li>
-                                <li> @Html.ActionLink("Editar", "editarReclutador", "Home")</li>
-                                <li> @Html.ActionLink("Eliminar", "eliminarReclutador", "Home")</li>
                             </ul>
                         </li>       
                     </ul>

@@ -21,7 +21,6 @@ namespace MvcApplication6.Controllers
             return View();
         }
 
-
         //Nuevo candidato
         public ActionResult Create()
         {
@@ -58,19 +57,52 @@ namespace MvcApplication6.Controllers
             }
         }
 
-       //Editar candidato
-        [HttpPost]
-        public ActionResult Edit(int ide)
+        //Editar candidato
+        public ActionResult Edit(int? id)
         {
-            int id = Convert.ToInt16(ide);
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
             var candidato = db.candidato.Where(b => b.idCandidato == id)
-            .Include(b => b.tecnologia)
-            .Include(b => b.persona)
-            .Single();
+                .Include(b => b.tecnologia)
+                .Include(b => b.persona)
+                .Single();
+            marcarTecnologias(candidato);
             return View(candidato);
-            /*
-            try
+        }
+        [HttpPost]
+        public ActionResult Edit(int? id, string[] tecnologiasList)
+        {
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+            var actualizar = db.candidato.Where(b => b.idCandidato == id)
+                .Include(b => b.tecnologia)
+                .Include(b => b.persona)
+                .Single();
+            if( TryUpdateModel( actualizar,"", new string[]{ "CURP", "RFC", "email", "telefono", "palabrasClave"}))
             {
+                try{
+
+                }
+            }
+        }
+
+        /*
+         * 
+         * 
+
+                marcarTecnologias(null);
+                if (ModelState.IsValid)
+                {
+                    editar =  asignarTecnologias(tecnologiasList,editar);
+                    db.Entry(editar).State = EntityState.Added;
+                    db.SaveChanges();
+                    return RedirectToAction("ConsultarCandidatos");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Por favor verifique la información proporcionada.");
+                    return View();
+                }
                 int id = Convert.ToInt16(ide);
                 var candidato = db.candidato.Where(b => b.idCandidato == id)
                 .Include(b => b.tecnologia)
@@ -78,8 +110,10 @@ namespace MvcApplication6.Controllers
                 .Single();
                 return View(candidato);
             }
-            catch { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }*/
+            catch { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
         }
+        
+*/
 
         //Eliminar candidato
         public ActionResult Delete(int id)

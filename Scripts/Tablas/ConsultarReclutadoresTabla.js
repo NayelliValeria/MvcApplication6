@@ -4,7 +4,7 @@ var aData;
 
 $(document).ready(function () {
     //Inicializar tabla
-    table = $('#candidatos').dataTable(
+    table = $('#reclutadores').dataTable(
         {
             "scrollX": true,
             "paging": true,
@@ -23,28 +23,26 @@ $(document).ready(function () {
                 "info": "Mostrando _PAGE_ de _PAGES_ resultados"
             },
             "columnDefs": [
-                  {"targets": [10], "visible": false, "searchable": false },
-                  { "targets":[11], "visible": false, "searchable": false }
+                  { "targets": [10], "visible": false, "searchable": false },
+                  { "targets": [11], "visible": false, "searchable": false }
             ],
             "aaSorting": [[0, "asc"]]
-    });
+        });
 
     //Seleccionar fila-candidato y mostrar detalles
-    $("#candidatos tbody").delegate('tr', 'click', function ()
-    {
+    $("#candidatos tbody").delegate('tr', 'click', function () {
         var tr = $(this).closest('tr');
         var row = $('#candidatos').dataTable().api().row(tr);
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
             row.child.hide();
-        } else{
+        } else {
             ocultarTodosDetalles();
             table.$('tr.selected').removeClass('selected');
             $(this).addClass('selected');
             aPos = table.fnGetPosition(this);
             aData = table.fnGetData(aPos[0]);
-            if (aData != null)
-            {
+            if (aData != null) {
                 var detalles = format(aData[aPos]);
                 row.child(detalles).show();
             }
@@ -74,8 +72,7 @@ $(document).ready(function () {
 });	//end function
 
 //Buscar elemento en array
-function inArray( a, array)
-{
+function inArray(a, array) {
     for (var i = 0; i < array.length; i++)
         if (array[i] == a) {
             return true;

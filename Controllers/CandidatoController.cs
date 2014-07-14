@@ -73,67 +73,65 @@ namespace MvcApplication6.Controllers
         public ActionResult Edit(int? id, string[] tecnologiasList)
         {
             if (id == null)
-            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+            { 
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest); 
+            }
             var actualizar = db.candidato.Where(b => b.idCandidato == id)
                 .Include(b => b.tecnologia)
                 .Include(b => b.persona)
                 .Single();
+            marcarTecnologias(actualizar);
+            actualizar = asignarTecnologias(tecnologiasList, actualizar);
             if( TryUpdateModel( actualizar,"", new string[]{ "CURP", "RFC", "email", "telefono", "palabrasClave"}))
             {
                 try{
-
-                }
-            }
-        }
-
-        /*
-         * 
-         * 
-
-                marcarTecnologias(null);
-                if (ModelState.IsValid)
-                {
-                    editar =  asignarTecnologias(tecnologiasList,editar);
-                    db.Entry(editar).State = EntityState.Added;
+                    
+                    db.Entry(actualizar).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("ConsultarCandidatos");
+
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Por favor verifique la información proporcionada.");
-                    return View();
+                catch{
+                    ModelState.AddModelError("", "No se pudo actualizar la información, intente nuevamente.");
                 }
-                int id = Convert.ToInt16(ide);
-                var candidato = db.candidato.Where(b => b.idCandidato == id)
+            }
+            return View(actualizar);
+        }
+
+        //Eliminar candidato
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+            var candidato = db.candidato.Where(b => b.idCandidato == id)
                 .Include(b => b.tecnologia)
                 .Include(b => b.persona)
                 .Single();
-                return View(candidato);
-            }
-            catch { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
-        }
-        
-*/
-
-        //Eliminar candidato
-        public ActionResult Delete(int id)
-        {
-            return View();
+            marcarTecnologias(candidato);
+            return View(candidato);
         }
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var delete = db.candidato.Where(b => b.idCandidato == id)
+                .Include(b => b.tecnologia)
+                .Include(b => b.persona)
+                .Single();
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
+                db.Entry(delete).State = EntityState.Deleted;
+                db.SaveChanges();
+                return RedirectToAction("ConsultarCandidatos");
+            }catch
             {
-                return View();
+                ModelState.AddModelError("", "No has sido posible eliminar a este candidato, intente nuevamente.");
             }
+            return View(delete);
         }
 
         //Agregar tecnologias

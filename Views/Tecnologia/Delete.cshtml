@@ -1,0 +1,36 @@
+﻿@model MvcApplication6.Models.tecnologia
+@{
+    ViewBag.Title = "Eliminar tecnología";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>¿Está seguro de querer eliminar esta tecnología?</h3>
+                <p>Al eliminar esta tecnología, la información no podrá recuperarse nuevamente.</p>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "Campos con valores no validos.")
+                             <form role="form">
+                                 <div class="form-group">
+                                     @Html.LabelFor(model => model.nombre)
+                                     @Html.DisplayFor(model => model.nombre, new { @class = "form-control" })
+                                 </div>
+                                 <p>
+                                     <input type="submit" value="Eliminar" class="btn btn-default" />
+                                 </p>
+                             </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

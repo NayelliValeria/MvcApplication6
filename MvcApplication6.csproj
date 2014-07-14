@@ -119,6 +119,7 @@
     <Compile Include="Controllers\CandidatoController.cs" />
     <Compile Include="Controllers\ReclutadorController.cs" />
     <Compile Include="Controllers\SesionController.cs" />
+    <Compile Include="Controllers\TecnologiaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -207,6 +208,8 @@
     <Content Include="Scripts\plugins\morris\raphael-2.1.0.min.js" />
     <Content Include="Scripts\sb-admin.js" />
     <Content Include="Scripts\Tablas\ConsultarCandidatosTabla.js" />
+    <Content Include="Scripts\Tablas\ConsultarReclutadoresTabla.js" />
+    <Content Include="Scripts\Tablas\ConsultarTecnologiasTabla.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -289,13 +292,31 @@
     <Content Include="Views\Candidato\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Reclutador\" />
+    <Content Include="Views\Reclutador\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Candidato\ConsultarCandidatos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Candidato\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Candidato\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Tecnologia\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Tecnologia\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Tecnologia\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Tecnologia\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Reclutador\Create.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -142,12 +142,17 @@ table.dataTable.display tbody tr.even:hover{
     width:800px;
 }
 
-#candidatos_length ,#candidatos_filter{
+#tecnologias_wrapper {
+    width:730px;
+}
+
+#candidatos_length ,#candidatos_filter,
+#tecnologias_length,  #tecnologias_filter{
     padding: 5px;
     width:auto;
     float:right;
 }
 
-#candidatos{
+#candidato, #tecnologias{
     table-layout:fixed;
 }

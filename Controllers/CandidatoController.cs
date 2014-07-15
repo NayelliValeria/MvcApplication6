@@ -82,14 +82,12 @@ namespace MvcApplication6.Controllers
                 .Single();
             marcarTecnologias(actualizar);
             actualizar = asignarTecnologias(tecnologiasList, actualizar);
-            if( TryUpdateModel( actualizar,"", new string[]{ "CURP", "RFC", "email", "telefono", "palabrasClave"}))
+            if (TryUpdateModel(actualizar, "", new string[] { "persona", "CURP", "RFC", "email", "telefono", "palabrasClave" }))
             {
                 try{
-                    
                     db.Entry(actualizar).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("ConsultarCandidatos");
-
                 }
                 catch{
                     ModelState.AddModelError("", "No se pudo actualizar la información, intente nuevamente.");

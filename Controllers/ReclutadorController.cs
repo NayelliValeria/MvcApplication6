@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcApplication6.Models;
+using System.Net;
+using System.Data.Entity.Infrastructure;
 
 namespace MvcApplication6.Controllers
 {
@@ -18,14 +20,15 @@ namespace MvcApplication6.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(reclutador rec, FormCollection collection)
+        public ActionResult Create([Bind(Include = "nombre, apePaterno, apeMaterno, usuario, password, permisos")]reclutador rec)
         {
             try
             {
+                rec = setIds(rec);
                 if (ModelState.IsValid)
                 {
-                    rec = setIds(rec);
-                    db.Entry(rec).State = EntityState.Added;
+                    db.reclutador.Add(rec);
+                    //db.Entry(rec).State = EntityState.Added;
                     db.SaveChanges();
                     return RedirectToAction("Details");
                 }
@@ -77,22 +80,24 @@ namespace MvcApplication6.Controllers
                 .Single();
             return View(editar);
         }
-        [HttpPost]
-        public ActionResult Edit(int? id, FormCollection collection)
+        [HttpPost, ActionName("Edit")]
+        public ActionResult EditPost(int? id)
         {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var editar = db.reclutador.Where(b => b.idReclutador == id)
                 .Include(b => b.persona)
                 .Single();
             try
             {
-                if (TryUpdateModel(editar, "", new string[] { "nombre, apePaterno, apeMaterno, usuario, permisos" }))
+                if (TryUpdateModel(editar, "", new string[] { "persona", "usuario", "password", "permisos" }))
                 {
                     db.Entry(editar).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Details");
                 }
             }
-            catch {
+            catch(RetryLimitExceededException) {
                 ModelState.AddModelError("","El reclutador no se ha guardado correctamente, por favro intente nuevamente. ");
                 return View(editar);
             }
@@ -106,8 +111,10 @@ namespace MvcApplication6.Controllers
         //Generar nuevo id
         private reclutador setIds(reclutador rec)
         {
-            rec.idReclutador = db.reclutador.Max(b => b.idReclutador) + 1;
-            rec.idPersona = db.persona.Max(b => b.idPersona) + 1;
+            try { rec.idReclutador = db.reclutador.Max(b => b.idReclutador) + 1; }
+            catch { rec.idReclutador = 1; }
+            try { rec.persona.idPersona = rec.idPersona = db.persona.Max(b => b.idPersona) + 1; }
+            catch { rec.persona.idPersona = rec.idPersona = 1; }
             return rec;
         }
 

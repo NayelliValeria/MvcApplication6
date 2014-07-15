@@ -39,11 +39,11 @@
                             <form>
                                 <fieldset>
                                     <div class="form-group">
-                                        @Html.TextBoxFor(x => x.usuario, new { @class = "from-control", placeholder = "Nombre de usuario" })
+                                        @Html.TextBoxFor(x => x.usuario, new { @class = "form-control", placeholder = "Nombre de usuario" })
                                         @Html.ValidationMessageFor(x => x.usuario)
                                     </div>
                                     <div class="form-group">
-                                        @Html.PasswordFor(x => x.password, new { @class="from-control", placeholder = "Contraseña"})
+                                        @Html.PasswordFor(x => x.password, new { @class="form-control", placeholder = "Contraseña"})
                                         @Html.ValidationMessageFor(x => x.password)
                                     </div>
                                     <div class="checkbox">

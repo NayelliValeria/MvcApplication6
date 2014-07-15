@@ -1,7 +1,6 @@
 ﻿@model MvcApplication6.Models.reclutador
-
 @{
-    ViewBag.Title = "Registrar nuevo reclutador";
+    ViewBag.Title = "Editar datos de reclutador.";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -39,13 +38,19 @@
                                  </div>
                                  <div class="form-group">
                                      @Html.LabelFor(model => model.password)
-                                     @Html.TextBoxFor(model => model.password, new { @class = "form-control" })
+                                     @Html.PasswordFor(model => model.password, new { @class = "form-control" })
                                      @Html.ValidationMessageFor(model => model.password)
                                  </div>
                                  <div class="form-group">
                                      <label>Permisos:</label>
-                                     @Html.RadioButtonFor(model=>model.permisos, 1)Administrador
-                                     @Html.RadioButtonFor(model=>model.permisos, 0)Reclutador
+                                     @if(Model.permisos==1)
+                                     {
+                                         <label>@Html.RadioButtonFor(model => model.permisos, 1, new { @checked = "checked" }) Administrador</label>
+                                         <label>@Html.RadioButtonFor(model => model.permisos, 0)Reclutador</label>
+                                     }else{
+                                         <label>@Html.RadioButtonFor(model => model.permisos, 1) Administrador</label>
+                                         <label>@Html.RadioButtonFor(model => model.permisos, 0, new { @checked = "checked" })Reclutador</label>
+                                     }
                                  </div>
                                  <p>
                                      <input type="submit" value="Guardar" class="btn btn-default" />
@@ -58,4 +63,5 @@
         </div>
     </div>
 </div>
+
 

@@ -1,12 +1,46 @@
+
 div.dataTables_length label {
     float: left;
     text-align: left;
     font-weight: normal;
 }
 
-div.dataTables_length select {
-    width: 75px;
+/*Info adicional*/
+tr {
+    border-bottom:1px rgba(0, 0, 0, .075) solid;
 }
+th, td { white-space: nowrap; }
+/***Opciones, busqueda, clumnas y filtrado****/
+div.dataTables_length,
+div.dataTables_filter, 
+div.infoDisponible {
+    float:left;
+    display:inline;
+    /*border:1px red solid;*/
+    font-family: sans-serif;
+}
+
+div.infoDisponible {
+    padding-top:5px;
+    width:auto;
+}
+div.infoDisponible select { width:210px; }
+
+.dataTables_length {
+    width:100px;
+}
+.dataTables_filter {
+    margin: 0px 10px 0px 10px;
+}
+
+div.dataTables_length select {
+    width: 50px;
+}
+select::-ms-expand {
+    display: none;
+}
+
+/**********/
 
 div.dataTables_filter label {
     float: right;
@@ -14,7 +48,7 @@ div.dataTables_filter label {
 }
 
 div.dataTables_filter input {
-    width: 16em;
+    width: 20em;
 }
 
 div.dataTables_info {
@@ -157,10 +191,10 @@ table.dataTable.display tbody tr.even:hover{
     table-layout:fixed;
 }
 
-.form-control, select, input {
-  display: block;
-  width: 100%;
-  height: 34px;
+.form-control,
+.dataTables_length select,
+.dataTables_filter input {
+ height: 30px;
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
@@ -174,6 +208,11 @@ table.dataTable.display tbody tr.even:hover{
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
+.form-control {
+    display:block;
+}
+
 .form-control:focus {
   border-color: #66afe9;
   outline: 0;
@@ -209,3 +248,7 @@ input[type="date"] {
 .form-group {
   margin-bottom: 15px;
 }
+.dataTables_scrollBody table thead {
+    font-size:1px;
+}
+

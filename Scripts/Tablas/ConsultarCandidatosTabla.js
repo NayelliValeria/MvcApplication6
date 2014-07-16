@@ -6,13 +6,12 @@ $(document).ready(function () {
     //Inicializar tabla
     table = $('#candidatos').dataTable(
         {
-            "scrollX": true,
             "paging": true,
             "paginateType": "full_numbers",
             "language": {
                 "search": "Buscar:",
-                "infoEmpty": "",
-                "zeroRecords": "No se encontraron reclutadores registrados",
+                "infoEmpty": "No se encontraron candidatos registrados",
+                "zeroRecords": "No se han encontrado registros",
                 "lengthMenu": 'Mostrar _MENU_ registros',
                 "paginate":
                 {
@@ -26,7 +25,8 @@ $(document).ready(function () {
                   {"targets": [10], "visible": false, "searchable": false },
                   { "targets":[11], "visible": false, "searchable": false }
             ],
-            "aaSorting": [[0, "asc"]]
+            "aaSorting": [[0, "asc"]],
+            "scrollX": true
     });
 
     //Seleccionar fila-candidato y mostrar detalles
@@ -50,16 +50,6 @@ $(document).ready(function () {
             }
         }
     });
-
-    //Editar
-    /*$("#editarCandidato").on('click', function () {
-        if (idCandidato == null)
-            window.alert("Seleccionar un candidato");
-        else{
-            document.getElementById('idCandidato').value = idCandidato;
-            editarCandidato();
-        }
-    });*/
 
     $("#mostrar_ocultar").multipleSelect();
     $("#mostrar_ocultar").multipleSelect("setSelects", [0, 1, 2]);

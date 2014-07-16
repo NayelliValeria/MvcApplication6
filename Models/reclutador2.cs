@@ -22,7 +22,7 @@ namespace MvcApplication6.Models
         private string Usuario;
         public string usuario {
             get { return this.Usuario; }
-            set { this.Usuario = value.Trim(); }
+            set { this.Usuario = (value != null ? value.Trim() : null); }
         }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
@@ -32,7 +32,7 @@ namespace MvcApplication6.Models
         private string Password;
         public string password {
             get { return this.Password; }
-            set { this.Password = value.Trim(); } 
+            set { this.Password = (value != null ? value.Trim() : null); } 
         }
 
         //<summary>Buscar al usuario en la base de datos</summary>

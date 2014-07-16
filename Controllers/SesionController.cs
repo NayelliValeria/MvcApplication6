@@ -28,6 +28,7 @@ namespace MvcApplication6.Controllers
                 Session["idReclutador"] = rec.idReclutador;
                 Session["nombre"] = rec.persona.nombre;
                 Session["apellidos"] = "" + rec.persona.apePaterno + " " + rec.persona.apeMaterno;
+                Session["permisos"] = rec.permisos;
                 return RedirectToAction("ConsultarCandidatos", "Candidato", rec);
             }
             ModelState.AddModelError("", "El usuario y/o contraseña son incorrectos.");

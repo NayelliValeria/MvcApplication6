@@ -28,7 +28,7 @@
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
 
             <div class="navbar-header">
-                @Html.ActionLink("Home", "Index", "Home")
+                <b><i>Bienvenid@@ </i></b> @Session["nombre"] @Session["apellidos"]
             </div>
 
             <!-- Sesion de usuario -->
@@ -73,13 +73,16 @@
                                 <li> @Html.ActionLink("Agregar", "Create", "Tecnologia")</li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i> Reclutadores<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li> @Html.ActionLink("Consultar", "Details", "Reclutador")</li>
-                                <li> @Html.ActionLink("Agregar", "Create", "Reclutador")</li>
-                            </ul>
-                        </li>       
+                        @if ((int)Session["permisos"] == 1)
+                        {
+                            <li>
+                                <a href="#"><i class="fa fa-edit fa-fw"></i> Reclutadores<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li> @Html.ActionLink("Consultar", "Details", "Reclutador")</li>
+                                    <li> @Html.ActionLink("Agregar", "Create", "Reclutador")</li>
+                                </ul>
+                            </li>        
+                        }
                     </ul>
                 </div>
             </div>

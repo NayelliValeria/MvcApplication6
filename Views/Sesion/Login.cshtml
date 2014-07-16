@@ -1,6 +1,7 @@
 ﻿
 @model MvcApplication6.Models.reclutador
 @{
+    ViewBag.Title = "Inicio de Sesión";
     Layout = null;
 }
 
@@ -35,7 +36,7 @@
                     <div class="panel-body">
                         @using (Html.BeginForm())
                         {
-                            @Html.ValidationSummary(true, "Error al iniciar sesión.");
+                            @Html.ValidationSummary(true, "");
                             <form>
                                 <fieldset>
                                     <div class="form-group">

@@ -12,7 +12,8 @@
 <script src="@Url.Content("~/Scripts/Tablas/ConsultarCandidatosTabla.js")"></script>
 
 <div class="table-responsive">
-        Información disponible: 
+    <div class="infoDisponible">
+        Mostrar:
         <select class="toogle-vis" id="mostrar_ocultar" multiple="multiple" name="select[]">
             <option value="0">Nombre</option>
             <option value="1">Apellido Paterno</option>
@@ -25,6 +26,7 @@
             <option value="8">Palabras clave</option>
             <option value="9">Fecha</option>
         </select>
+    </div>
     <table class="table table-striped table-bordered table-hover" id="candidatos">
         <thead>
                 <tr>

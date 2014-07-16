@@ -365,6 +365,8 @@ table.dataTable thead .sorting:after {
 }
 div.boton {
     text-align:center;
-    display:block;
+    display:inline-block;
     /*border: 1px blue solid;*/
+    margin-top:50px;
+    width:100%;
 }

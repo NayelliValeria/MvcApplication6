@@ -15,6 +15,7 @@
     <Property Name="idReclutador" Type="Int32" />
     <NavigationProperty Name="persona" Relationship="Self.FK_candidato_persona" FromRole="candidato" ToRole="persona" />
     <NavigationProperty Name="tecnologia" Relationship="Self.candidato_tecnologia" FromRole="candidato" ToRole="tecnologia" />
+    <NavigationProperty Name="reclutador" Relationship="RecluITModel.FK_candidato_reclutador" FromRole="candidato" ToRole="reclutador" />
   </EntityType>
   <EntityType Name="persona">
     <Key>
@@ -37,6 +38,7 @@
     <Property Name="idPersona" Type="Int32" Nullable="false" />
     <Property Name="permisos" Type="Int32" />
     <NavigationProperty Name="persona" Relationship="Self.FK_reclutador_persona" FromRole="reclutador" ToRole="persona" />
+    <NavigationProperty Name="candidato" Relationship="RecluITModel.FK_candidato_reclutador" FromRole="reclutador" ToRole="candidato" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -139,7 +141,10 @@
     <FunctionImport Name="ConsultarCandidatos" ReturnType="Collection(RecluITModel.ConsultarCandidatos_Result)">
       <Parameter Name="idRec" Mode="In" Type="Int32" />
     </FunctionImport>
-    <EntitySet Name="candidato_persona" EntityType="RecluITModel.candidato_persona" />
+    <AssociationSet Name="FK_candidato_reclutador" Association="RecluITModel.FK_candidato_reclutador">
+      <End Role="reclutador" EntitySet="reclutador" />
+      <End Role="candidato" EntitySet="candidato" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="iniciarSesion_Result">
     <Property Type="Int32" Name="idReclutador" Nullable="false" />
@@ -174,23 +179,16 @@
     <Property Type="String" Name="apePaterno" Nullable="true" MaxLength="20" />
     <Property Type="String" Name="apeMaterno" Nullable="false" MaxLength="20" />
   </ComplexType>
-  <EntityType Name="candidato_persona">
-    <Key>
-      <PropertyRef Name="idCandidato" />
-      <PropertyRef Name="CURP" />
-      <PropertyRef Name="apeMaterno" />
-    </Key>
-    <Property Name="idCandidato" Type="Int32" Nullable="false" />
-    <Property Name="CURP" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
-    <Property Name="RFC" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-    <Property Name="email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-    <Property Name="telefono" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-    <Property Name="palabrasClave" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
-    <Property Name="fecha_registro" Type="DateTime" Precision="3" />
-    <Property Name="idPersona" Type="Int32" />
-    <Property Name="idReclutador" Type="Int32" />
-    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-    <Property Name="apePaterno" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-    <Property Name="apeMaterno" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
-  </EntityType>
+  <Association Name="FK_candidato_reclutador">
+    <End Type="RecluITModel.reclutador" Role="reclutador" Multiplicity="0..1" />
+    <End Type="RecluITModel.candidato" Role="candidato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reclutador">
+        <PropertyRef Name="idReclutador" />
+      </Principal>
+      <Dependent Role="candidato">
+        <PropertyRef Name="idReclutador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -64,17 +64,6 @@
         <ScalarProperty Name="idTecnologia" ColumnName="idTecnologia" />
       </EndProperty>
     </AssociationSetMapping>
-    <FunctionImportMapping FunctionImportName="iniciarSesion" FunctionName="RecluITModel.Store.iniciarSesion">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="RecluITModel.iniciarSesion_Result">
-          <ScalarProperty Name="idReclutador" ColumnName="idReclutador" />
-          <ScalarProperty Name="usuario" ColumnName="usuario" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
-          <ScalarProperty Name="permisos" ColumnName="permisos" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="RecluITModel.Store.sp_alterdiagram" />
     <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="RecluITModel.Store.sp_creatediagram" />
     <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="RecluITModel.Store.sp_dropdiagram" />
@@ -99,23 +88,5 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="RecluITModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="RecluITModel.Store.sp_upgraddiagrams" />
-    <EntitySetMapping Name="candidato_persona">
-      <EntityTypeMapping TypeName="RecluITModel.candidato_persona">
-        <MappingFragment StoreEntitySet="candidato_persona">
-          <ScalarProperty Name="apeMaterno" ColumnName="apeMaterno" />
-          <ScalarProperty Name="apePaterno" ColumnName="apePaterno" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="idReclutador" ColumnName="idReclutador" />
-          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
-          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
-          <ScalarProperty Name="palabrasClave" ColumnName="palabrasClave" />
-          <ScalarProperty Name="telefono" ColumnName="telefono" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="RFC" ColumnName="RFC" />
-          <ScalarProperty Name="CURP" ColumnName="CURP" />
-          <ScalarProperty Name="idCandidato" ColumnName="idCandidato" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

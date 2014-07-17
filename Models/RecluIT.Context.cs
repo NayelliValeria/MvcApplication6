@@ -24,11 +24,7 @@ namespace MvcApplication6.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<reclutador>().HasRequired(x => x.persona);
-            modelBuilder.Entity<candidato>().HasRequired(x => x.persona);
-            modelBuilder.Entity<candidato>().HasRequired(x => x.reclutador);
-            modelBuilder.Entity<candidato>().HasMany(x => x.tecnologia).WithMany();
-            //throw new UnintentionalCodeFirstException();
+            throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<candidato> candidato { get; set; }
@@ -36,9 +32,8 @@ namespace MvcApplication6.Models
         public virtual DbSet<reclutador> reclutador { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tecnologia> tecnologia { get; set; }
-        public virtual DbSet<candidato_persona> candidato_persona { get; set; }
     
-        public virtual ObjectResult<iniciarSesion_Result> iniciarSesion(string user, string pass)
+        /*public virtual ObjectResult<iniciarSesion_Result> iniciarSesion(string user, string pass)
         {
             var userParameter = user != null ?
                 new ObjectParameter("user", user) :
@@ -49,7 +44,7 @@ namespace MvcApplication6.Models
                 new ObjectParameter("pass", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<iniciarSesion_Result>("iniciarSesion", userParameter, passParameter);
-        }
+        }*/
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -154,13 +149,13 @@ namespace MvcApplication6.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
-        public virtual ObjectResult<ConsultarCandidatos_Result> ConsultarCandidatos(Nullable<int> idRec)
+        /*public virtual ObjectResult<ConsultarCandidatos_Result> ConsultarCandidatos(Nullable<int> idRec)
         {
             var idRecParameter = idRec.HasValue ?
                 new ObjectParameter("idRec", idRec) :
                 new ObjectParameter("idRec", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarCandidatos_Result>("ConsultarCandidatos", idRecParameter);
-        }
+        }*/
     }
 }

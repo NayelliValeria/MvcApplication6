@@ -20,7 +20,7 @@ namespace MvcApplication6.Models
             this.candidato = new HashSet<candidato>();
             this.reclutador = new HashSet<reclutador>();
         }
-    
+
         [Key]
         public int idPersona { get; set; }
 

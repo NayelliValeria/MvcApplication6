@@ -14,8 +14,7 @@ namespace MvcApplication6.Models
         RecluITEntities db = new RecluITEntities();
 
         public bool rememberMe { get; set; }
-        public IList<candidato_persona> candidatosRegistrados { get; set; }
-
+   
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         [StringLength(10, ErrorMessage = "Este nombre de {0} no es valido")]
         [Display(Name = "usuario")]

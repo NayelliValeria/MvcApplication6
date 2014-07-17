@@ -127,16 +127,6 @@
       <DependentUpon>RecluIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\candidato2.cs" />
-    <Compile Include="Models\candidato_persona.cs">
-      <DependentUpon>RecluIT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\candidato_persona2.cs" />
-    <Compile Include="Models\ConsultarCandidatos_Result.cs">
-      <DependentUpon>RecluIT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\iniciarSesion_Result.cs">
-      <DependentUpon>RecluIT.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\persona.cs">
       <DependentUpon>RecluIT.tt</DependentUpon>
     </Compile>
@@ -193,7 +183,9 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\CreateCandidato.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\mascaras.js" />
     <Content Include="Scripts\plugins\dataTables\dataTables.bootstrap.js" />
     <Content Include="Scripts\plugins\dataTables\jquery.dataTables.js" />
     <Content Include="Scripts\plugins\flot\excanvas.min.js" />

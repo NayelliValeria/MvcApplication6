@@ -56,6 +56,42 @@ namespace MvcApplication6.Controllers
                 return View();
             }
         }
+        //Verificar CURP para nuevo registro
+        [HttpPost]
+        public ActionResult verificarCURP( string curp)
+        {
+            if (curp == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+            try{
+                var can = db.candidato.Where(b => b.CURP == curp).Single();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }catch{
+                return new HttpStatusCodeResult(HttpStatusCode.OK); 
+            }
+        }
+        //detalles del curp registrado
+        [HttpPost]
+        public ActionResult detallesCURP(string curp)
+        {
+            if (curp == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+            try
+            {
+                var candidato = db.candidato.Where(b => b.CURP == curp)
+                    .Include(b=>b.persona)
+                    .Include(b=>b.reclutador).Single();
+                Response.StatusCode = (int)HttpStatusCode.OK;
+                return Content( "<br>Nombre: " + candidato.persona.nombre
+                    + " " + candidato.persona.apePaterno 
+                    + " " + candidato.persona.apeMaterno
+                    + "<br>Fecha: " + candidato.fecha_registro
+                    + "<br>e-mail: " +candidato.email
+                    + "<br>Reclutador: "+ candidato.reclutador.persona.nombre
+                    + " " + candidato.reclutador.persona.apePaterno
+                    + " " + candidato.reclutador.persona.apeMaterno +" ", "text/html");
+            }
+            catch { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+        }
 
         //Editar candidato
         public ActionResult Edit(int? id)
@@ -108,7 +144,6 @@ namespace MvcApplication6.Controllers
             marcarTecnologias(candidato);
             return View(candidato);
         }
-
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

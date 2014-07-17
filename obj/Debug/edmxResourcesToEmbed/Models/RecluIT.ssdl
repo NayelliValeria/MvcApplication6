@@ -58,27 +58,6 @@
     <Property Name="idTecnologia" Type="int" Nullable="false" />
     <Property Name="nombre" Type="nchar" MaxLength="300" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'RecluIT.dbo.candidato_persona' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="candidato_persona">
-    <Key>
-      <PropertyRef Name="idCandidato" />
-      <PropertyRef Name="CURP" />
-      <PropertyRef Name="apeMaterno" />
-    </Key>
-    <Property Name="idCandidato" Type="int" Nullable="false" />
-    <Property Name="CURP" Type="nchar" MaxLength="25" Nullable="false" />
-    <Property Name="RFC" Type="nchar" MaxLength="20" />
-    <Property Name="email" Type="nchar" MaxLength="30" />
-    <Property Name="telefono" Type="nchar" MaxLength="20" />
-    <Property Name="palabrasClave" Type="nchar" MaxLength="200" />
-    <Property Name="fecha_registro" Type="datetime" />
-    <Property Name="idPersona" Type="int" />
-    <Property Name="idReclutador" Type="int" />
-    <Property Name="nombre" Type="nchar" MaxLength="30" />
-    <Property Name="apePaterno" Type="nchar" MaxLength="20" />
-    <Property Name="apeMaterno" Type="nchar" MaxLength="20" Nullable="false" />
-  </EntityType>
   <Association Name="FK_candidato_persona">
     <End Role="persona" Type="Self.persona" Multiplicity="0..1" />
     <End Role="candidato" Type="Self.candidato" Multiplicity="*" />
@@ -88,6 +67,18 @@ warning 6002: The table/view 'RecluIT.dbo.candidato_persona' does not have a pri
       </Principal>
       <Dependent Role="candidato">
         <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_candidato_reclutador">
+    <End Role="reclutador" Type="Self.reclutador" Multiplicity="0..1" />
+    <End Role="candidato" Type="Self.candidato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reclutador">
+        <PropertyRef Name="idReclutador" />
+      </Principal>
+      <Dependent Role="candidato">
+        <PropertyRef Name="idReclutador" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -128,10 +119,6 @@ warning 6002: The table/view 'RecluIT.dbo.candidato_persona' does not have a pri
     </ReferentialConstraint>
   </Association>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-  <Function Name="iniciarSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="user" Type="nchar" Mode="In" />
-    <Parameter Name="pass" Type="nchar" Mode="In" />
-  </Function>
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -169,24 +156,12 @@ warning 6002: The table/view 'RecluIT.dbo.candidato_persona' does not have a pri
     <EntitySet Name="reclutador" EntityType="Self.reclutador" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tecnologia" EntityType="Self.tecnologia" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="candidato_persona" EntityType="Self.candidato_persona" store:Type="Views" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [candidato_persona].[idCandidato] AS [idCandidato], 
-    [candidato_persona].[CURP] AS [CURP], 
-    [candidato_persona].[RFC] AS [RFC], 
-    [candidato_persona].[email] AS [email], 
-    [candidato_persona].[telefono] AS [telefono], 
-    [candidato_persona].[palabrasClave] AS [palabrasClave], 
-    [candidato_persona].[fecha_registro] AS [fecha_registro], 
-    [candidato_persona].[idPersona] AS [idPersona], 
-    [candidato_persona].[idReclutador] AS [idReclutador], 
-    [candidato_persona].[nombre] AS [nombre], 
-    [candidato_persona].[apePaterno] AS [apePaterno], 
-    [candidato_persona].[apeMaterno] AS [apeMaterno]
-    FROM [dbo].[candidato_persona] AS [candidato_persona]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK_candidato_persona" Association="Self.FK_candidato_persona">
       <End Role="persona" EntitySet="persona" />
+      <End Role="candidato" EntitySet="candidato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_candidato_reclutador" Association="Self.FK_candidato_reclutador">
+      <End Role="reclutador" EntitySet="reclutador" />
       <End Role="candidato" EntitySet="candidato" />
     </AssociationSet>
     <AssociationSet Name="FK_candidato_tecnologia_candidato" Association="Self.FK_candidato_tecnologia_candidato">

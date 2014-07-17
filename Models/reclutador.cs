@@ -15,11 +15,17 @@ namespace MvcApplication6.Models
     
     public partial class reclutador
     {
+        public reclutador()
+        {
+            this.candidato = new HashSet<candidato>();
+        }
+    
         [Key]
         public int idReclutador { get; set; }
         public int idPersona { get; set; }
         public Nullable<int> permisos { get; set; }
     
         public virtual persona persona { get; set; }
+        public virtual ICollection<candidato> candidato { get; set; }
     }
 }

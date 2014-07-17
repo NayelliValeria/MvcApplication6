@@ -52,13 +52,13 @@ namespace MvcApplication6.Models
         [DataType(DataType.MultilineText)]
         [Display(Name = "Palabras clave")]
         public string palabrasClave { get; set; }
-
+    
         public Nullable<System.DateTime> fecha_registro { get; set; }
         public Nullable<int> idPersona { get; set; }
         public Nullable<int> idReclutador { get; set; }
     
         public virtual persona persona { get; set; }
-        public virtual reclutador reclutador { get; set; }
         public virtual ICollection<tecnologia> tecnologia { get; set; }
+        public virtual reclutador reclutador { get; set; }
     }
 }

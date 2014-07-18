@@ -11,8 +11,10 @@ namespace MvcApplication6.Models
 {
     public partial class reclutador:DbContext 
     {
-        RecluITEntities db = new RecluITEntities();
+        RecluITEntities1 db = new RecluITEntities1();
 
+        [Key]
+        public int idReclutador { get; set; }
         public bool rememberMe { get; set; }
    
         [Required(ErrorMessage = "El campo {0} es obligatorio")]

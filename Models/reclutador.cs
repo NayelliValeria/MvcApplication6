@@ -11,7 +11,6 @@ namespace MvcApplication6.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class reclutador
     {
@@ -20,12 +19,11 @@ namespace MvcApplication6.Models
             this.candidato = new HashSet<candidato>();
         }
     
-        [Key]
-        public int idReclutador { get; set; }
+        
         public int idPersona { get; set; }
-        public Nullable<int> permisos { get; set; }
+        public int permisos { get; set; }
     
-        public virtual persona persona { get; set; }
         public virtual ICollection<candidato> candidato { get; set; }
+        public virtual persona persona { get; set; }
     }
 }

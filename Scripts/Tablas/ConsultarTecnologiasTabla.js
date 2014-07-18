@@ -20,7 +20,7 @@ $(document).ready(function () {
                     "sPrevious": "Anterior"
                 },
                 "infoFiltered": " - resultados de  _MAX_ ",
-                "info": "Mostrando _PAGE_ de _PAGES_ resultados"
+                "info": "Página _PAGE_ de _PAGES_"
             },
             "columnDefs": [
                   { "targets": [1], "visible": false, "searchable": false },

@@ -11,7 +11,7 @@ namespace MvcApplication6.Controllers
 {
     public class CandidatoController : Controller
     {
-        RecluITEntities db = new RecluITEntities();
+        RecluITEntities1 db = new RecluITEntities1();
     
         //Acciones realizadas por Reclutador
         public ActionResult ConsultarCandidatos()
@@ -33,28 +33,28 @@ namespace MvcApplication6.Controllers
         {
             try
             {
-                marcarTecnologias(null);
+                marcarTecnologias(nuevo);
                 if (ModelState.IsValid)
                 {
                     nuevo.idReclutador = (int)Session["idReclutador"];
                     nuevo.setIds();
+                    nuevo.fecha_registro = DateTime.Now;
                     nuevo = asignarTecnologias(tecnologiasList, nuevo);
                     db.Entry(nuevo).State = EntityState.Added;
                     db.SaveChanges();
                     return RedirectToAction("ConsultarCandidatos");
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Por favor verifique la información proporcionada.");
-                    return View();
-                }
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e.Message);
-                ModelState.AddModelError("", "Ha ocurrido un error al guardar los datos, por favor intente nuevamente.");
-                return View();
+                ModelState.AddModelError("", "Ha ocurrido un error al guardar los datos, por favor intente nuevamente." + "\n\nError: " + e.Message);
+                return View(nuevo);
             }
+            finally
+            {
+                ModelState.AddModelError("", "Por favor verifique la información proporcionada.");
+            }
+            return View(nuevo);
         }
         //Verificar CURP para nuevo registro
         [HttpPost]
@@ -63,14 +63,14 @@ namespace MvcApplication6.Controllers
             if (curp == null)
             { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
             try{
-                var can = db.candidato.Where(b => b.CURP == curp).Single();
+                db.candidato.Where(b => b.CURP == curp).Single();
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }catch{
                 return new HttpStatusCodeResult(HttpStatusCode.OK); 
             }
         }
         //detalles del curp registrado
-        [HttpPost]
+        //[HttpPost]
         public ActionResult detallesCURP(string curp)
         {
             if (curp == null)
@@ -81,14 +81,15 @@ namespace MvcApplication6.Controllers
                     .Include(b=>b.persona)
                     .Include(b=>b.reclutador).Single();
                 Response.StatusCode = (int)HttpStatusCode.OK;
-                return Content( "<br>Nombre: " + candidato.persona.nombre
-                    + " " + candidato.persona.apePaterno 
+                string texto = "<br>Nombre: " + candidato.persona.nombre
+                    + " " + candidato.persona.apePaterno
                     + " " + candidato.persona.apeMaterno
                     + "<br>Fecha: " + candidato.fecha_registro
-                    + "<br>e-mail: " +candidato.email
-                    + "<br>Reclutador: "+ candidato.reclutador.persona.nombre
+                    + "<br>e-mail: " + candidato.email
+                    + "<br>Reclutador: " + candidato.reclutador.persona.nombre
                     + " " + candidato.reclutador.persona.apePaterno
-                    + " " + candidato.reclutador.persona.apeMaterno +" ", "text/html");
+                    + " " + candidato.reclutador.persona.apeMaterno + " ";
+                return Content( texto );
             }
             catch { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
         }

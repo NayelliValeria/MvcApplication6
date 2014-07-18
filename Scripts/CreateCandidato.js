@@ -1,18 +1,17 @@
 ﻿$(document).ready(function () {
 
-    noPermitir();
-
     $('#curp').focus();
+    CURPVacio();
     document.getElementById('details').style.visibility = 'hidden';
 
     $("#curp").focus(function () {
         document.getElementById('resultado_curp').style.visibility = 'hidden';
+        document.getElementById('details').style.visibility = 'hidden';
     });
 
     $('#curp').blur(function () {
         $('.field-validation-error').remove();
-        valor = $('#curp').val();
-        if (valor != '' && validarCURP(valor))//validar CURP
+        if (CURPVacio())//validar CURP
         {
             $.ajax({//Se verifica si este CURP ya esta registrado
                 url: '/Candidato/verificarCURP',
@@ -20,6 +19,7 @@
                 data: 'curp=' + valor,
                 success: function (resultado) {
                     permitir();
+                    $('#persona_nombre').focus();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     $('#resultado_curp').append('<p id="error" class="field-validation-error">Este CURP ha sido registrado previamente.</p>');
@@ -27,57 +27,67 @@
                     noPermitir();
                 }
             });//fin .ajax()
-        } else { //no
-            $('#resultado_curp').append('<p id="error" class="field-validation-error">Este CURP no es valido, por favor verifíquelo.</p>');
-            document.getElementById('details').style.visibility = 'hidden';
-            noPermitir();
         }
     });
 
     $('#detalles').click(function () {
-        window.alert("enviando");
         $.ajax({
             url: '/Candidato/detallesCURP',
-            type: 'POST',
+            type: 'GET',
             data: 'curp=' + valor,
-            dataType: 'html',
-            succes: function (candidato) {
+            dataType:"text",
+            success: function (candidato) {
                 ventana(candidato);
-            }, error: function (jqXHR, textStatus, errorThrown) {
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
                 ventana("Se ha producido un error al consulta, intente nuevamente." + textStatus + " -" + jqXHR + " -" + errorThrown);
             }
         });
         return false;
     });
 
-    function ventana(text) {
-        alert("fui llamado");
-        var v = document.getElementById("ventana");
-        dimmer = document.createElement("div");
-        $('#info').append('<p>' + text + '</p>');
-        dimmer.style.width = window.innerWidth + 'px';
-        dimmer.style.height = window.innerHeight + 'px';
-        dimmer.className = 'dimmer';
-        dimmer.onclick = function () {
-            document.body.removeChild(this);
-            $("#info").removeAttr("p");
-            $("#info").html('');
-        };
-        document.body.appendChild(dimmer);
-        return false;
-    }
     $('#btnCerrarVentana').click(function () {
         var v = document.getElementById("ventana");
         document.body.removeChild(dimmer);
+        v.style.visibility = "hidden";
         $("#info").html('');
     });
+
 });
+
+function ventana(text) {
+    var v = document.getElementById("ventana");
+    dimmer = document.createElement("div");
+    $('#info').append('<p>' + text + '</p>');
+    dimmer.style.width = window.innerWidth + 'px';
+    dimmer.style.height = window.innerHeight + 100 + 'px';
+    dimmer.className = 'dimmer';
+    dimmer.onclick = function () {
+        document.body.removeChild(this);
+        v.style.visibility = "hidden";
+        $("#info").html('');
+    };
+    document.body.appendChild(dimmer);
+    v.style.visibility = "visible";
+    return false;
+}
+
+function CURPVacio() {
+    valor = $('#curp').val();
+    if (valor != '' && validarCURP(valor))//validar CURP
+        return true;
+    else { //no
+        $('#resultado_curp').append('<p id="error" class="field-validation-error">Por favor introduzca el CURP del candidato a registrar.</p>');
+        document.getElementById('details').style.visibility = 'hidden';
+        noPermitir();
+    }
+    return false;
+}
 
 function permitir() {
     document.getElementById('resultado_curp').style.visibility = 'visible';
     $('input[type=text],textarea').prop('readonly', false);
     $('input[type=checkbox]').prop('disabled', false);
-    $('#detalles').style.visibility = "hidden";
 }
 
 function noPermitir() {

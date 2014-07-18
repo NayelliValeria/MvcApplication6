@@ -5,14 +5,14 @@
       <PropertyRef Name="idCandidato" />
     </Key>
     <Property Name="idCandidato" Type="int" Nullable="false" />
-    <Property Name="CURP" Type="nchar" MaxLength="25" Nullable="false" />
-    <Property Name="RFC" Type="nchar" MaxLength="20" />
-    <Property Name="email" Type="nchar" MaxLength="30" />
-    <Property Name="telefono" Type="nchar" MaxLength="20" />
-    <Property Name="palabrasClave" Type="nchar" MaxLength="200" />
-    <Property Name="fecha_registro" Type="datetime" />
-    <Property Name="idPersona" Type="int" />
-    <Property Name="idReclutador" Type="int" />
+    <Property Name="CURP" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="RFC" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="email" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="telefono" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="palabrasClave" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+    <Property Name="idPersona" Type="int" Nullable="false" />
+    <Property Name="idReclutador" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="candidato_tecnologia">
     <Key>
@@ -27,19 +27,19 @@
       <PropertyRef Name="idPersona" />
     </Key>
     <Property Name="idPersona" Type="int" Nullable="false" />
-    <Property Name="nombre" Type="nchar" MaxLength="30" />
-    <Property Name="apePaterno" Type="nchar" MaxLength="20" />
-    <Property Name="apeMaterno" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="nombre" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="apePaterno" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="apeMaterno" Type="nchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="reclutador">
     <Key>
       <PropertyRef Name="idReclutador" />
     </Key>
     <Property Name="idReclutador" Type="int" Nullable="false" />
-    <Property Name="usuario" Type="nchar" MaxLength="20" Nullable="false" />
-    <Property Name="password" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="usuario" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="password" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="idPersona" Type="int" Nullable="false" />
-    <Property Name="permisos" Type="int" />
+    <Property Name="permisos" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -59,7 +59,7 @@
     <Property Name="nombre" Type="nchar" MaxLength="300" Nullable="false" />
   </EntityType>
   <Association Name="FK_candidato_persona">
-    <End Role="persona" Type="Self.persona" Multiplicity="0..1" />
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
     <End Role="candidato" Type="Self.candidato" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="persona">
@@ -71,7 +71,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_candidato_reclutador">
-    <End Role="reclutador" Type="Self.reclutador" Multiplicity="0..1" />
+    <End Role="reclutador" Type="Self.reclutador" Multiplicity="1" />
     <End Role="candidato" Type="Self.candidato" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="reclutador">

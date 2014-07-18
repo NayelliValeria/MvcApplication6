@@ -11,7 +11,6 @@ namespace MvcApplication6.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class tecnologia
     {
@@ -19,14 +18,6 @@ namespace MvcApplication6.Models
         {
             this.candidato = new HashSet<candidato>();
         }
-
-        [Key]
-        public int idTecnologia { get; set; }
-        [DataType(DataType.Text, ErrorMessage = "En este campo sólo se permite texto")]
-        [Required(ErrorMessage = "Debe escribir el nombre de la tecnología.")]
-        [StringLength(300, ErrorMessage = "Máximo 300 caracteres.")]
-        [Display(Name = "Nombre de la tecnología")]
-        public string nombre { get; set; }
     
         public virtual ICollection<candidato> candidato { get; set; }
     }

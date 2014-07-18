@@ -10,7 +10,7 @@ namespace MvcApplication6.Controllers
 {
     public class TecnologiaController : Controller
     {
-        RecluITEntities db = new RecluITEntities();
+        RecluITEntities1 db = new RecluITEntities1();
 
         //Consultar Tecnologia
         public ActionResult Details()
@@ -98,8 +98,12 @@ namespace MvcApplication6.Controllers
         //Crear un Id para una nueva tecnología
         private int crearId()
         {
-            int max = db.candidato.Max(b => b.idCandidato);
-            return max++;
+            try
+            {
+                int max = db.tecnologia.Max(b => b.idTecnologia);
+                return max+1;
+            }
+            catch { return 1; }
         }
     }
 }

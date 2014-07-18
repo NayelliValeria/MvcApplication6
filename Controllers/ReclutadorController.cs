@@ -12,7 +12,7 @@ namespace MvcApplication6.Controllers
 {
     public class ReclutadorController : Controller
     {
-        RecluITEntities db = new RecluITEntities();
+        RecluITEntities1 db = new RecluITEntities1();
 
         //Por administrador
         public ActionResult Create() 

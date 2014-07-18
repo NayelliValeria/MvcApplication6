@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cba88f2e06dc445fa558acc8bd701f21" Name="Diagram1" ZoomLevel="83">
-        <EntityTypeShape EntityType="RecluITModel.candidato" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RecluITModel.persona" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RecluITModel.reclutador" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RecluITModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RecluITModel.tecnologia" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+      <Diagram DiagramId="892b45bea1ff40aeb2aada1b391b3d01" Name="Diagram1">
+        <EntityTypeShape EntityType="RecluITModel.candidato" Width="1.5" PointX="3.875" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecluITModel.persona" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecluITModel.reclutador" Width="1.5" PointX="1.625" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecluITModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecluITModel.tecnologia" Width="1.5" PointX="6.125" PointY="5.625" IsExpanded="true" />
         <AssociationConnector Association="RecluITModel.FK_candidato_persona" ManuallyRouted="false" />
+        <AssociationConnector Association="RecluITModel.FK_candidato_reclutador" ManuallyRouted="false" />
         <AssociationConnector Association="RecluITModel.FK_reclutador_persona" ManuallyRouted="false" />
         <AssociationConnector Association="RecluITModel.candidato_tecnologia" ManuallyRouted="false" />
-        <AssociationConnector Association="RecluITModel.FK_candidato_reclutador" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

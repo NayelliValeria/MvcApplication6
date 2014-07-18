@@ -15,10 +15,10 @@ namespace MvcApplication6.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class RecluITEntities : DbContext
+    public partial class RecluITEntities1 : DbContext
     {
-        public RecluITEntities()
-            : base("name=RecluITEntities")
+        public RecluITEntities1()
+            : base("name=RecluITEntities1")
         {
         }
     
@@ -32,19 +32,6 @@ namespace MvcApplication6.Models
         public virtual DbSet<reclutador> reclutador { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tecnologia> tecnologia { get; set; }
-    
-        /*public virtual ObjectResult<iniciarSesion_Result> iniciarSesion(string user, string pass)
-        {
-            var userParameter = user != null ?
-                new ObjectParameter("user", user) :
-                new ObjectParameter("user", typeof(string));
-    
-            var passParameter = pass != null ?
-                new ObjectParameter("pass", pass) :
-                new ObjectParameter("pass", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<iniciarSesion_Result>("iniciarSesion", userParameter, passParameter);
-        }*/
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -148,14 +135,5 @@ namespace MvcApplication6.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
-    
-        /*public virtual ObjectResult<ConsultarCandidatos_Result> ConsultarCandidatos(Nullable<int> idRec)
-        {
-            var idRecParameter = idRec.HasValue ?
-                new ObjectParameter("idRec", idRec) :
-                new ObjectParameter("idRec", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarCandidatos_Result>("ConsultarCandidatos", idRecParameter);
-        }*/
     }
 }

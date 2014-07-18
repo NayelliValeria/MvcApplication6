@@ -371,21 +371,14 @@ div.boton {
     width:100%;
 }
 
+div.boton2 {
+    width:auto;
+    padding-top:24px;
+}
+
 /*dimer*/
-.dimmer{ 
-    background-image: -webkit-gradient( 
-    linear, 
-    left top, 
-    left bottom, 
-    color-stop(0, #E7F5F2), 
-    color-stop(1, #FFFFFF), 
-    color-stop(1, #FFFFFF) 
-    ); 
-    background-image: -o-linear-gradient(bottom, #E7F5F2 0%, #FFFFFF 100%, #FFFFFF 100%); 
-    background-image: -moz-linear-gradient(bottom, #E7F5F2 0%, #FFFFFF 100%, #FFFFFF 100%); 
-    background-image: -webkit-linear-gradient(bottom, #E7F5F2 0%, #FFFFFF 100%, #FFFFFF 100%); 
-    background-image: -ms-linear-gradient(bottom, #E7F5F2 0%, #FFFFFF 100%, #FFFFFF 100%); 
-    background-image: linear-gradient(to bottom, #E7F5F2 0%, #FFFFFF 100%, #FFFFFF 100%); 
+.dimmer{
+    background-color:#e7e7e7;
     top: 0px; 
     position:absolute; 
     z-index:99; 
@@ -395,3 +388,17 @@ div.boton {
 #details, #error {
     display:inline;
 }
+
+#ventana{ 
+    visibility:hidden;
+    position:absolute;
+    border:1px solid #B3A9A9; 
+    border-radius:10px;
+    z-index:100; 
+    width: auto; 
+    height:auto; 
+    padding:40px; 
+    top:20%; 
+    margin-left:20%;
+    background: #FFFFFF;
+} 

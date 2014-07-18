@@ -130,6 +130,7 @@
     <Compile Include="Models\persona.cs">
       <DependentUpon>RecluIT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\persona2.cs" />
     <Compile Include="Models\RecluIT.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -161,6 +162,7 @@
     <Compile Include="Models\tecnologia.cs">
       <DependentUpon>RecluIT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tecnologia2.cs" />
     <Compile Include="Models\tecnologiaCandidato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -212,27 +214,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Models\RecluIT.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RecluIT.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Models\RecluIT.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RecluIT.edmx</DependentUpon>
-      <LastGenOutput>RecluIT.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\RecluIT.edmx.diagram">
-      <DependentUpon>RecluIT.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\RecluIT.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RecluIT.edmx</DependentUpon>
-      <LastGenOutput>RecluIT.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -311,6 +292,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Reclutador\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\RecluIT.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RecluIT.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\RecluIT.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecluIT.edmx</DependentUpon>
+      <LastGenOutput>RecluIT.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\RecluIT.edmx.diagram">
+      <DependentUpon>RecluIT.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\RecluIT.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecluIT.edmx</DependentUpon>
+      <LastGenOutput>RecluIT.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

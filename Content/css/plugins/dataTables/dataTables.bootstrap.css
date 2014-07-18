@@ -176,18 +176,20 @@ table.dataTable.display tbody tr.even:hover{
     width:800px;
 }
 
-#tecnologias_wrapper {
+#tecnologias_wrapper,
+#reclutadores_wrapper {
     width:730px;
 }
 
 #candidatos_length ,#candidatos_filter,
-#tecnologias_length,  #tecnologias_filter{
+#tecnologias_length,  #tecnologias_filter,
+#reclutadores_length,  #reclutadores_filter{
     padding: 5px;
     width:auto;
     float:right;
 }
 
-#candidato, #tecnologias{
+#candidato{
     table-layout:fixed;
 }
 

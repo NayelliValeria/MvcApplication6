@@ -176,9 +176,12 @@ table.dataTable.display tbody tr.even:hover{
     width:800px;
 }
 
-#tecnologias_wrapper,
-#reclutadores_wrapper {
+#tecnologias_wrapper{
     width:730px;
+}
+
+#reclutadores_wrapper {
+    width:800px;
 }
 
 #candidatos_length ,#candidatos_filter,

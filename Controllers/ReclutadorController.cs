@@ -20,7 +20,7 @@ namespace MvcApplication6.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create([Bind(Include = "nombre, apePaterno, apeMaterno, usuario, password, permisos")]reclutador rec)
+        public ActionResult Create([Bind(Include = "persona, usuario, password, permisos")]reclutador rec)
         {
             try
             {
@@ -32,6 +32,11 @@ namespace MvcApplication6.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Details");
                 }
+            }
+            catch (DbUpdateException)
+            {
+                ModelState.AddModelError("", "Este nombre de usuario ya existe, por favor elija otro.");
+                return View();
             }
             catch (Exception)
             {
@@ -105,7 +110,32 @@ namespace MvcApplication6.Controllers
         }
 
         //Por reclutador
-        public void changePassword() { }
+        public ActionResult changePassword() {
+            return View();
+        }
+        //[HttpPost]
+        public ActionResult changePassword2(string pass, string pass2)
+        {
+            //string pass2="";
+            if(pass == null || pass2==null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            try
+            {
+                var rec = db.reclutador
+                    .Where(b => b.usuario == Session["usuario"])
+                    .Where(b => b.password == pass)
+                    .Include(b=>b.persona).Single();
+                rec.password = pass2;
+                db.Entry(rec).State = EntityState.Modified;
+                db.SaveChanges();
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            }
+            catch {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+        }
+
+
         public void changeData() { }
 
         //Generar nuevo id

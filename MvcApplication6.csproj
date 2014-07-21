@@ -185,6 +185,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\changePassword.js" />
     <Content Include="Scripts\CreateCandidato.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\mascaras.js" />
@@ -313,6 +314,9 @@
       <DependentUpon>RecluIT.edmx</DependentUpon>
       <LastGenOutput>RecluIT.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Reclutador\changePassword.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

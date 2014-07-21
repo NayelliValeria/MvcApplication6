@@ -26,6 +26,7 @@ namespace MvcApplication6.Controllers
             {
                 FormsAuthentication.SetAuthCookie(rec.usuario, rec.rememberMe);
                 Session["idReclutador"] = rec.idReclutador;
+                Session["usuario"] = rec.usuario;
                 Session["nombre"] = rec.persona.nombre;
                 Session["apellidos"] = "" + rec.persona.apePaterno + " " + rec.persona.apeMaterno;
                 Session["permisos"] = rec.permisos;

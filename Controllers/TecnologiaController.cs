@@ -1,6 +1,7 @@
 ﻿using MvcApplication6.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -83,14 +84,19 @@ namespace MvcApplication6.Controllers
             { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
             var delete = db.tecnologia.Where(b => b.idTecnologia == id).Single();
             try
-            {   
+            {
                 db.Entry(delete).State = System.Data.Entity.EntityState.Deleted;
                 db.SaveChanges();
                 return RedirectToAction("Details");
             }
+            catch (DbUpdateException)
+            {
+                ModelState.AddModelError("", "Esta tecnología no ha podido eliminarse debido a que hay candidatos registrados con ella.");
+                return View(delete);
+            }
             catch
             {
-                ModelState.AddModelError("","Esta tecnología no ha podido eliminarse correctamente, por favor intente nuevamente.");
+                ModelState.AddModelError("", "HA ocurrido un error al eliminar esta tecnología, por favor intente nuevamente.");
                 return View(delete);
             }
         }

@@ -45,7 +45,7 @@
                                  <div class="form-group">
                                      <label>Permisos:</label>
                                      @Html.RadioButtonFor(model=>model.permisos, 1)Administrador
-                                     @Html.RadioButtonFor(model=>model.permisos, 0)Reclutador
+                                     @Html.RadioButtonFor(model => model.permisos, 0, new { @checked = "checked"})Reclutador
                                  </div>
                                  <p>
                                      <input type="submit" value="Guardar" class="btn btn-default" />

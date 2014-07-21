@@ -402,3 +402,8 @@ div.boton2 {
     margin-left:20%;
     background: #FFFFFF;
 } 
+
+/*cambair contraseña*/
+#actual_val, #nueva1_val, #nueva2_val, #resultado {
+    visibility:collapse;
+}

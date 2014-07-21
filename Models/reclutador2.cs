@@ -16,21 +16,24 @@ namespace MvcApplication6.Models
         [Key]
         public int idReclutador { get; set; }
         public bool rememberMe { get; set; }
-   
+
+        [Required(ErrorMessage="Debe seleccionar los permisos del reclutador.")]
+        public int permisos { get; set; }
+
+        private string Usuario;
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         [StringLength(10, ErrorMessage = "Este nombre de {0} no es valido")]
         [Display(Name = "usuario")]
-        private string Usuario;
         public string usuario {
             get { return this.Usuario; }
             set { this.Usuario = (value != null ? value.Trim() : null); }
         }
 
+        private string Password;
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         [StringLength(10, ErrorMessage = "El campo {0} no es valido")]
         [DataType(DataType.Password)]
         [Display(Name = "contraseña")]
-        private string Password;
         public string password {
             get { return this.Password; }
             set { this.Password = (value != null ? value.Trim() : null); } 
@@ -52,5 +55,6 @@ namespace MvcApplication6.Models
             }
             catch (Exception) { return null;  }
         }
+
     }
 }

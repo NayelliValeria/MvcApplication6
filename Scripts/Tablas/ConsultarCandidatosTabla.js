@@ -1,8 +1,10 @@
-﻿var table;
+﻿
+var table;
 var aPos;
 var aData;
-
+var permisos = null;
 $(document).ready(function () {
+    permisos = $("#permisos").val();
     //Inicializar tabla
     table = $('#candidatos').dataTable(
         {
@@ -22,8 +24,7 @@ $(document).ready(function () {
                 "info": "Página _PAGE_ de _PAGES_"
             },
             "columnDefs": [
-                  {"targets": [10], "visible": false, "searchable": false },
-                  { "targets":[11], "visible": false, "searchable": false }
+                  { }
             ],
             "aaSorting": [[0, "asc"]],
             "scrollX": true
@@ -75,7 +76,7 @@ function inArray( a, array)
 
 function redefinirColumnas() {
     var seleccionados = $('#mostrar_ocultar').multipleSelect('getSelects');
-    for (var j = 0; j < 10; j++) {
+    for (var j = 0; j < 12; j++) {
         var column = $('#candidatos').dataTable().api().column(j);
         if (inArray(j, seleccionados))
             column.visible(true);
@@ -142,11 +143,24 @@ function format(d) {
                     '<td>Fecha de registro:</td>' +
                     '<td>' + d[9] + '</td>' +
                 '</tr>';
+        if (permisos == 1 && !inArray(10, seleccionados))
+            details +=
+                '<tr>' +
+                    '<td>Reclutador:</td>' +
+                    '<td>' + d[10] + '</td>' +
+                '</tr>';
     }
-    details +=
-        '<tr>' +
-            '<td>' + d[11] + '</td>' +
-        '</tr>' +
-    '</table>';
+    if(permisos == 0)
+        details +=
+            '<tr>' +
+                '<td>' + d[10] + '</td>' +
+            '</tr>' +
+        '</table>';
+    else
+        details +=
+            '<tr>' +
+                '<td>' + d[11] + '</td>' +
+            '</tr>' +
+        '</table>';
     return details;
 }

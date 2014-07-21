@@ -17,7 +17,10 @@ namespace MvcApplication6.Controllers
         public ActionResult ConsultarCandidatos()
         {
             int id = (int)Session["idReclutador"];
-            ViewBag.candidatos = db.candidato.Where(b => b.idReclutador == id).ToList();
+            if ((int)Session["permisos"] == 1)// administrador
+                ViewBag.candidatos = db.candidato.Include(b=>b.reclutador).ToList();
+            else //reclutador
+                ViewBag.candidatos = db.candidato.Where(b => b.idReclutador == id).ToList();
             return View();
         }
 

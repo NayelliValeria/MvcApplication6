@@ -21,7 +21,6 @@ namespace MvcApplication6.Models
     
         
         public int idPersona { get; set; }
-        public int permisos { get; set; }
     
         public virtual ICollection<candidato> candidato { get; set; }
         public virtual persona persona { get; set; }

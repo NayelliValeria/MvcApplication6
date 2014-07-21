@@ -32,16 +32,6 @@
                                      @Html.ValidationMessageFor(model => model.persona.apeMaterno)
                                  </div>
                                  <div class="form-group">
-                                     @Html.LabelFor(model => model.usuario)
-                                     @Html.TextBoxFor(model => model.usuario, new { @class = "form-control" })
-                                     @Html.ValidationMessageFor(model => model.usuario)
-                                 </div>
-                                 <div class="form-group">
-                                     @Html.LabelFor(model => model.password)
-                                     @Html.PasswordFor(model => model.password, new { @class = "form-control" })
-                                     @Html.ValidationMessageFor(model => model.password)
-                                 </div>
-                                 <div class="form-group">
                                      <label>Permisos:</label>
                                      @if(Model.permisos==1)
                                      {

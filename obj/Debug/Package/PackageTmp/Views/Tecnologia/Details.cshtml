@@ -1,0 +1,44 @@
+﻿@model MvcApplication6.Models.tecnologia
+@{
+    ViewBag.Title = "Tecnologías";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href= "@Url.Content("~/Content/css/plugins/dataTables/dataTables.bootstrap.css")" rel="stylesheet">
+<script src="@Url.Content("~/Scripts/plugins/dataTables/jquery.dataTables.js")"></script>
+<script src="@Url.Content("~/Scripts/Tablas/ConsultarTecnologiasTabla.js")"></script>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover" id="tecnologias">
+        <thead>
+                <tr>
+                    <th>Tecnología</th>
+                    <th>id_tecnologia</th>
+                    <th>opciones</th>
+                </tr>
+        </thead>
+        <tbody>
+            @try
+            {
+                foreach (var tec in ViewBag.tecnologias)
+                { 
+                    <tr>
+                        <td>@tec.nombre</td>
+                        <td id="id_candidato">@tec.idTecnologia</td>
+                        <td>@Html.ActionLink("Editar", "Edit", new { id=tec.idTecnologia }) |
+                            @Html.ActionLink("Eliminar", "Delete", new { id=tec.idTecnologia})
+                        </td>
+                    </tr>
+                }
+            }
+            catch (NullReferenceException)
+            {
+                <tr><td>VAlor nullo</td></tr>
+            } 
+            catch( Exception e)
+            {
+                <tr><td>Ha ocurrido una excepcioón @e.Message</td></tr>
+            } 
+        </tbody>
+    </table>
+</div>

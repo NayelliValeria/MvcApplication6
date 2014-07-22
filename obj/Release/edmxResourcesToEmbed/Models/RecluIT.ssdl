@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RecluITModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="candidato">
+    <Key>
+      <PropertyRef Name="idCandidato" />
+    </Key>
+    <Property Name="idCandidato" Type="int" Nullable="false" />
+    <Property Name="CURP" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="RFC" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="email" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="telefono" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="palabrasClave" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+    <Property Name="idPersona" Type="int" Nullable="false" />
+    <Property Name="idReclutador" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="candidato_tecnologia">
+    <Key>
+      <PropertyRef Name="idCandidato" />
+      <PropertyRef Name="idTecnologia" />
+    </Key>
+    <Property Name="idCandidato" Type="int" Nullable="false" />
+    <Property Name="idTecnologia" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="idPersona" />
+    </Key>
+    <Property Name="idPersona" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="apePaterno" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="apeMaterno" Type="nchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="reclutador">
+    <Key>
+      <PropertyRef Name="idReclutador" />
+    </Key>
+    <Property Name="idReclutador" Type="int" Nullable="false" />
+    <Property Name="usuario" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="password" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="idPersona" Type="int" Nullable="false" />
+    <Property Name="permisos" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tecnologia">
+    <Key>
+      <PropertyRef Name="idTecnologia" />
+    </Key>
+    <Property Name="idTecnologia" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="nchar" MaxLength="300" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_candidato_persona">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="candidato" Type="Self.candidato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="candidato">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_candidato_reclutador">
+    <End Role="reclutador" Type="Self.reclutador" Multiplicity="1" />
+    <End Role="candidato" Type="Self.candidato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reclutador">
+        <PropertyRef Name="idReclutador" />
+      </Principal>
+      <Dependent Role="candidato">
+        <PropertyRef Name="idReclutador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_candidato_tecnologia_candidato">
+    <End Role="candidato" Type="Self.candidato" Multiplicity="1" />
+    <End Role="candidato_tecnologia" Type="Self.candidato_tecnologia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="candidato">
+        <PropertyRef Name="idCandidato" />
+      </Principal>
+      <Dependent Role="candidato_tecnologia">
+        <PropertyRef Name="idCandidato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_candidato_tecnologia_tecnologia">
+    <End Role="tecnologia" Type="Self.tecnologia" Multiplicity="1" />
+    <End Role="candidato_tecnologia" Type="Self.candidato_tecnologia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tecnologia">
+        <PropertyRef Name="idTecnologia" />
+      </Principal>
+      <Dependent Role="candidato_tecnologia">
+        <PropertyRef Name="idTecnologia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reclutador_persona">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="reclutador" Type="Self.reclutador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="reclutador">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="RecluITModelStoreContainer">
+    <EntitySet Name="candidato" EntityType="Self.candidato" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="candidato_tecnologia" EntityType="Self.candidato_tecnologia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reclutador" EntityType="Self.reclutador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tecnologia" EntityType="Self.tecnologia" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_candidato_persona" Association="Self.FK_candidato_persona">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="candidato" EntitySet="candidato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_candidato_reclutador" Association="Self.FK_candidato_reclutador">
+      <End Role="reclutador" EntitySet="reclutador" />
+      <End Role="candidato" EntitySet="candidato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_candidato_tecnologia_candidato" Association="Self.FK_candidato_tecnologia_candidato">
+      <End Role="candidato" EntitySet="candidato" />
+      <End Role="candidato_tecnologia" EntitySet="candidato_tecnologia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_candidato_tecnologia_tecnologia" Association="Self.FK_candidato_tecnologia_tecnologia">
+      <End Role="tecnologia" EntitySet="tecnologia" />
+      <End Role="candidato_tecnologia" EntitySet="candidato_tecnologia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reclutador_persona" Association="Self.FK_reclutador_persona">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="reclutador" EntitySet="reclutador" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

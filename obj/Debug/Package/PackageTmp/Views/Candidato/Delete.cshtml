@@ -1,0 +1,81 @@
+﻿@model MvcApplication6.Models.candidato
+
+@{
+    ViewBag.Title = "Eliminar Candidato";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>¿Está seguro de querer eliminar a este candidato?</h3>
+                Si elimina a este candidato, la información no podrá ser recuperada.
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "Campos con valores no validos.")
+                             <form role="form">
+                                 <div class="form-group">
+                                     @Html.LabelFor(model => model.CURP)
+                                     @Html.DisplayFor(model => model.CURP, new { @class = "form-control" })
+                                 </div>
+                                 <div class="form-group">
+                                     @Html.LabelFor(model => model.persona.nombre)
+                                     @Html.DisplayFor(model => model.persona.nombre, new { @class = "form-control" })
+                                 </div>
+                                 <div class="form-group">
+                                     @Html.LabelFor(model => model.persona.apePaterno)
+                                     @Html.DisplayFor(model => model.persona.apePaterno, new { @class = "form-control" })
+                                 </div>
+                                 <div class="form-group">
+                                     @Html.LabelFor(model => model.persona.apeMaterno)
+                                     @Html.DisplayFor(model => model.persona.apeMaterno, new { @class = "form-control" })
+                                 </div>
+                                 <div class="form-group">
+                                     @Html.LabelFor(model => model.RFC)
+                                     @Html.DisplayFor(model => model.RFC, new { @class = "form-control" })
+                                 </div>
+                                 <div class="form-group">
+                                     @Html.LabelFor(model => model.email)
+                                     @Html.DisplayFor(model => model.email, new { @class = "form-control" })
+                                 </div>
+                                 <div class="form-group">
+                                     @Html.LabelFor(model => model.telefono)
+                                     @Html.DisplayFor(model => model.telefono, new { @class = "form-control" })
+                                 </div>
+                                 <div class="form-group">
+                                     <label>Tecnologías</label>
+                                      @{
+                                          List<MvcApplication6.Models.tecnologiaCandidato> tecs =  ViewBag.tecnologias;
+                                          <div class="form-group">
+                                              <ul>
+                                          @foreach (var t in tecs)
+                                          { 
+                                              if(t.domina)
+                                              { <li> @t.nombreTecnologia </li> }
+                                          }
+                                              </ul>
+                                          </div> 
+                                      }
+                                 </div>
+                                 <div class="form-group">
+                                     @Html.LabelFor(model => model.palabrasClave)
+                                     @Html.DisplayFor(model => model.palabrasClave, new { @class = "form-control" })
+                                 </div>
+                                 <p>
+                                     <input type="submit" value="Eliminar" class="btn btn-default" />
+                                 </p>
+                             </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

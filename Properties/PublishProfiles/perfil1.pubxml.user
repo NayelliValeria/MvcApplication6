@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\inetpub\wwwroot\MvcApplication6</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>07/01/2014 09:39:51</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>07/01/2014 09:39:51</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/01/2014 09:38:25</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>07/01/2014 09:38:28</publishTime>
+    </File>
+    <File Include="bin/MvcApplication6.dll">
+      <publishTime>07/22/2014 12:17:52</publishTime>
+    </File>
+    <File Include="bin/MvcApplication6.pdb">
+      <publishTime>07/22/2014 12:17:52</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>07/01/2014 09:38:25</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>07/01/2014 09:38:28</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>07/01/2014 09:38:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>07/01/2014 09:38:29</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>07/01/2014 09:38:29</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>07/01/2014 09:38:27</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>07/01/2014 09:38:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>07/01/2014 09:38:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>07/01/2014 09:38:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>07/01/2014 09:38:26</publishTime>
+    </File>
+    <File Include="Content/css/bootstrap.css">
+      <publishTime>07/16/2014 11:47:45</publishTime>
+    </File>
+    <File Include="Content/css/bootstrap.min.css">
+      <publishTime>07/16/2014 12:48:27</publishTime>
+    </File>
+    <File Include="Content/css/multiple-select.css">
+      <publishTime>07/16/2014 10:51:45</publishTime>
+    </File>
+    <File Include="Content/css/plugins/dataTables/dataTables.bootstrap.css">
+      <publishTime>07/22/2014 10:11:17</publishTime>
+    </File>
+    <File Include="Content/css/plugins/morris/morris-0.4.3.min.css">
+      <publishTime>07/02/2014 09:18:13</publishTime>
+    </File>
+    <File Include="Content/css/plugins/social-buttons/social-buttons.css">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/css/plugins/timeline/timeline.css">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/css/sb-admin.css">
+      <publishTime>07/22/2014 09:38:09</publishTime>
+    </File>
+    <File Include="Content/font-awesome/css/font-awesome.css">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/css/font-awesome.min.css">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/fontawesome-webfont.eot">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/fontawesome-webfont.svg">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/fontawesome-webfont.ttf">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/fontawesome-webfont.woff">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/FontAwesome.otf">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/bordered-pulled.less">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/core.less">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/fixed-width.less">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/font-awesome.less">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/icons.less">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/larger.less">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/list.less">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/mixins.less">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/path.less">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/rotated-flipped.less">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/spinning.less">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/stacked.less">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/variables.less">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/font-awesome.scss">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_bordered-pulled.scss">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_core.scss">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_fixed-width.scss">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_icons.scss">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_larger.scss">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_list.scss">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_mixins.scss">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_path.scss">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_rotated-flipped.scss">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_spinning.scss">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_stacked.scss">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_variables.scss">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>07/02/2014 09:18:14</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>07/01/2014 09:38:23</publishTime>
+    </File>
+    <File Include="Models/RecluIT.edmx.diagram">
+      <publishTime>07/18/2014 11:06:02</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>07/01/2014 09:39:55</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>07/01/2014 09:53:01</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>07/01/2014 09:53:01</publishTime>
+    </File>
+    <File Include="Scripts/changePassword.js">
+      <publishTime>07/22/2014 09:48:25</publishTime>
+    </File>
+    <File Include="Scripts/CreateCandidato.js">
+      <publishTime>07/18/2014 12:50:25</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>07/15/2014 12:50:27</publishTime>
+    </File>
+    <File Include="Scripts/mascaras.js">
+      <publishTime>07/17/2014 08:43:01</publishTime>
+    </File>
+    <File Include="Scripts/plugins/dataTables/dataTables.bootstrap.js">
+      <publishTime>07/01/2014 09:53:01</publishTime>
+    </File>
+    <File Include="Scripts/plugins/dataTables/jquery.dataTables.js">
+      <publishTime>07/01/2014 09:53:01</publishTime>
+    </File>
+    <File Include="Scripts/plugins/flot/excanvas.min.js">
+      <publishTime>07/01/2014 09:53:01</publishTime>
+    </File>
+    <File Include="Scripts/plugins/flot/jquery.flot.js">
+      <publishTime>07/01/2014 09:53:01</publishTime>
+    </File>
+    <File Include="Scripts/plugins/flot/jquery.flot.pie.js">
+      <publishTime>07/01/2014 09:53:01</publishTime>
+    </File>
+    <File Include="Scripts/plugins/flot/jquery.flot.resize.js">
+      <publishTime>07/01/2014 09:53:01</publishTime>
+    </File>
+    <File Include="Scripts/plugins/flot/jquery.flot.tooltip.min.js">
+      <publishTime>07/01/2014 09:53:01</publishTime>
+    </File>
+    <File Include="Scripts/plugins/jquery.multiple.select.js">
+      <publishTime>07/11/2014 11:26:36</publishTime>
+    </File>
+    <File Include="Scripts/plugins/metisMenu/jquery.metisMenu.js">
+      <publishTime>07/01/2014 09:53:01</publishTime>
+    </File>
+    <File Include="Scripts/plugins/morris/morris.js">
+      <publishTime>07/01/2014 09:53:01</publishTime>
+    </File>
+    <File Include="Scripts/plugins/morris/raphael-2.1.0.min.js">
+      <publishTime>07/01/2014 09:53:02</publishTime>
+    </File>
+    <File Include="Scripts/sb-admin.js">
+      <publishTime>07/21/2014 12:21:30</publishTime>
+    </File>
+    <File Include="Scripts/Tablas/ConsultarCandidatosTabla.js">
+      <publishTime>07/21/2014 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/Tablas/ConsultarReclutadoresTabla.js">
+      <publishTime>07/18/2014 12:00:35</publishTime>
+    </File>
+    <File Include="Scripts/Tablas/ConsultarTecnologiasTabla.js">
+      <publishTime>07/18/2014 12:00:12</publishTime>
+    </File>
+    <File Include="Views/Candidato/ConsultarCandidatos.cshtml">
+      <publishTime>07/21/2014 11:14:30</publishTime>
+    </File>
+    <File Include="Views/Candidato/Create.cshtml">
+      <publishTime>07/18/2014 12:33:01</publishTime>
+    </File>
+    <File Include="Views/Candidato/Delete.cshtml">
+      <publishTime>07/14/2014 10:12:08</publishTime>
+    </File>
+    <File Include="Views/Candidato/Edit.cshtml">
+      <publishTime>07/18/2014 12:55:57</publishTime>
+    </File>
+    <File Include="Views/Reclutador/changePassword.cshtml">
+      <publishTime>07/21/2014 12:33:07</publishTime>
+    </File>
+    <File Include="Views/Reclutador/Create.cshtml">
+      <publishTime>07/21/2014 10:32:13</publishTime>
+    </File>
+    <File Include="Views/Reclutador/Details.cshtml">
+      <publishTime>07/15/2014 09:16:18</publishTime>
+    </File>
+    <File Include="Views/Reclutador/Edit.cshtml">
+      <publishTime>07/21/2014 09:59:02</publishTime>
+    </File>
+    <File Include="Views/Sesion/Login.cshtml">
+      <publishTime>07/16/2014 09:50:44</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>07/01/2014 09:57:20</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>07/21/2014 11:23:56</publishTime>
+    </File>
+    <File Include="Views/Tecnologia/Create.cshtml">
+      <publishTime>07/18/2014 11:47:59</publishTime>
+    </File>
+    <File Include="Views/Tecnologia/Delete.cshtml">
+      <publishTime>07/14/2014 12:07:18</publishTime>
+    </File>
+    <File Include="Views/Tecnologia/Details.cshtml">
+      <publishTime>07/14/2014 11:28:33</publishTime>
+    </File>
+    <File Include="Views/Tecnologia/Edit.cshtml">
+      <publishTime>07/14/2014 11:56:10</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>07/01/2014 09:38:23</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/22/2014 12:17:54</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

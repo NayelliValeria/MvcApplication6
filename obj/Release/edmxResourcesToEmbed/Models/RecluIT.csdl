@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RecluITModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="candidato">
+    <Key>
+      <PropertyRef Name="idCandidato" />
+    </Key>
+    <Property Name="idCandidato" Type="Int32" Nullable="false" />
+    <Property Name="CURP" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="RFC" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="telefono" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="palabrasClave" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="fecha_registro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idPersona" Type="Int32" Nullable="false" />
+    <Property Name="idReclutador" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="persona" Relationship="Self.FK_candidato_persona" FromRole="candidato" ToRole="persona" />
+    <NavigationProperty Name="reclutador" Relationship="Self.FK_candidato_reclutador" FromRole="candidato" ToRole="reclutador" />
+    <NavigationProperty Name="tecnologia" Relationship="Self.candidato_tecnologia" FromRole="candidato" ToRole="tecnologia" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="idPersona" />
+    </Key>
+    <Property Name="idPersona" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="apePaterno" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="apeMaterno" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="candidato" Relationship="Self.FK_candidato_persona" FromRole="persona" ToRole="candidato" />
+    <NavigationProperty Name="reclutador" Relationship="Self.FK_reclutador_persona" FromRole="persona" ToRole="reclutador" />
+  </EntityType>
+  <EntityType Name="reclutador">
+    <Key>
+      <PropertyRef Name="idReclutador" />
+    </Key>
+    <Property Name="idReclutador" Type="Int32" Nullable="false" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="idPersona" Type="Int32" Nullable="false" />
+    <Property Name="permisos" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="candidato" Relationship="Self.FK_candidato_reclutador" FromRole="reclutador" ToRole="candidato" />
+    <NavigationProperty Name="persona" Relationship="Self.FK_reclutador_persona" FromRole="reclutador" ToRole="persona" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tecnologia">
+    <Key>
+      <PropertyRef Name="idTecnologia" />
+    </Key>
+    <Property Name="idTecnologia" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="300" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="candidato" Relationship="Self.candidato_tecnologia" FromRole="tecnologia" ToRole="candidato" />
+  </EntityType>
+  <Association Name="FK_candidato_persona">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="candidato" Type="Self.candidato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="candidato">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_candidato_reclutador">
+    <End Role="reclutador" Type="Self.reclutador" Multiplicity="1" />
+    <End Role="candidato" Type="Self.candidato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reclutador">
+        <PropertyRef Name="idReclutador" />
+      </Principal>
+      <Dependent Role="candidato">
+        <PropertyRef Name="idReclutador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reclutador_persona">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="reclutador" Type="Self.reclutador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="reclutador">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="candidato_tecnologia">
+    <End Role="candidato" Type="Self.candidato" Multiplicity="*" />
+    <End Role="tecnologia" Type="Self.tecnologia" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="RecluITEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="candidato" EntityType="Self.candidato" />
+    <EntitySet Name="persona" EntityType="Self.persona" />
+    <EntitySet Name="reclutador" EntityType="Self.reclutador" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tecnologia" EntityType="Self.tecnologia" />
+    <AssociationSet Name="FK_candidato_persona" Association="Self.FK_candidato_persona">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="candidato" EntitySet="candidato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_candidato_reclutador" Association="Self.FK_candidato_reclutador">
+      <End Role="reclutador" EntitySet="reclutador" />
+      <End Role="candidato" EntitySet="candidato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reclutador_persona" Association="Self.FK_reclutador_persona">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="reclutador" EntitySet="reclutador" />
+    </AssociationSet>
+    <AssociationSet Name="candidato_tecnologia" Association="Self.candidato_tecnologia">
+      <End Role="candidato" EntitySet="candidato" />
+      <End Role="tecnologia" EntitySet="tecnologia" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(RecluITModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(RecluITModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

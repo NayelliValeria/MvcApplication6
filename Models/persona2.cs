@@ -12,18 +12,18 @@ namespace MvcApplication6.Models
         public int idPersona { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
-        [StringLength(30, ErrorMessage = "Este {0} no es valido")]
+        [StringLength(30, ErrorMessage = "Máximo 30 caracteres.")]
         [DataType(DataType.Text)]
         [Display(Name = "Nombre")]
         public string nombre { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
-        [StringLength(20, ErrorMessage = "Este {0} no es valido")]
+        [StringLength(20, ErrorMessage = "Máximo 20 caracteres.")]
         [DataType(DataType.Text)]
         [Display(Name = "Apellido paterno")]
         public string apePaterno { get; set; }
 
-        [StringLength(20, ErrorMessage = "Este {0} no es valido")]
+        [StringLength(20, ErrorMessage = "Máximo 20 caracteres.")]
         [DataType(DataType.Text)]
         [Display(Name = "Apellido Materno")]
         public string apeMaterno { get; set; }

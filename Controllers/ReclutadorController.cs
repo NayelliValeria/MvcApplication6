@@ -95,7 +95,7 @@ namespace MvcApplication6.Controllers
                 .Single();
             try
             {
-                if (TryUpdateModel(editar, "", new string[] { "persona", "usuario", "password", "permisos" }))
+                if (TryUpdateModel(editar, "", new string[] { "persona", "usuario", "permisos" }))
                 {
                     db.Entry(editar).State = EntityState.Modified;
                     db.SaveChanges();
@@ -103,7 +103,7 @@ namespace MvcApplication6.Controllers
                 }
             }
             catch(RetryLimitExceededException) {
-                ModelState.AddModelError("","El reclutador no se ha guardado correctamente, por favro intente nuevamente. ");
+                ModelState.AddModelError("","El reclutador no se ha guardado correctamente, por favor intente nuevamente. ");
                 return View(editar);
             }
             return View(editar);
@@ -119,19 +119,26 @@ namespace MvcApplication6.Controllers
             //string pass2="";
             if(pass == null || pass2==null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            string user = (string)Session["usuario"];
+            var rec = db.reclutador
+                .Where(b => b.usuario ==user)
+                .Where(b => b.password == pass)
+                .Include(b=>b.persona)
+                .Single();
+            //rec.password = pass2;
             try
             {
-                var rec = db.reclutador
-                    .Where(b => b.usuario == Session["usuario"])
-                    .Where(b => b.password == pass)
-                    .Include(b=>b.persona).Single();
-                rec.password = pass2;
+                db.Entry(rec).Property(b=>b.password).CurrentValue = pass2;
                 db.Entry(rec).State = EntityState.Modified;
                 db.SaveChanges();
                 return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
-            catch {
+            catch (RetryLimitExceededException)
+            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            catch { 
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest); 
             }
         }
 

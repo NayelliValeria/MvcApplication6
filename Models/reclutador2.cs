@@ -22,7 +22,7 @@ namespace MvcApplication6.Models
 
         private string Usuario;
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
-        [StringLength(10, ErrorMessage = "Este nombre de {0} no es valido")]
+        [StringLength(10, ErrorMessage = "Máximo 10 caracteres.")]
         [Display(Name = "usuario")]
         public string usuario {
             get { return this.Usuario; }
@@ -31,7 +31,7 @@ namespace MvcApplication6.Models
 
         private string Password;
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
-        [StringLength(10, ErrorMessage = "El campo {0} no es valido")]
+        [StringLength(10, ErrorMessage = "Máximo 10 caracteres.")]
         [DataType(DataType.Password)]
         [Display(Name = "contraseña")]
         public string password {

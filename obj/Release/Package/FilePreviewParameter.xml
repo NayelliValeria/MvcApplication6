@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Default Web Site/recluit" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Usuario\\documents\\visual\ studio\ 2012\\Projects\\MvcApplication6\\MvcApplication6\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Usuario\\documents\\visual\ studio\ 2012\\Projects\\MvcApplication6\\MvcApplication6\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="MvcApplication6.Models.RecluITEntities1-Web.config Connection String" description="" value="Data Source=RTSC-DESA;Initial Catalog=RecluIT;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Usuario\\documents\\visual\ studio\ 2012\\Projects\\MvcApplication6\\MvcApplication6\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MvcApplication6.Models.RecluITEntities1']/@connectionString" />
+  </parameter>
+  <parameter name="MvcApplication6.Models.reclutador-Web.config Connection String" description="MvcApplication6.Models.reclutador Connection String used in web.config by the application to access the database." value="MvcApplication6.Models.reclutador_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Usuario\\documents\\visual\ studio\ 2012\\Projects\\MvcApplication6\\MvcApplication6\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MvcApplication6.Models.reclutador']/@connectionString" />
+  </parameter>
+</parameters>

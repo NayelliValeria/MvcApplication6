@@ -29,3 +29,5 @@ C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplic
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\obj\Release\MvcApplication6.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\obj\Release\MvcApplication6.pdb
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\obj\Release\MvcApplication6.csprojResolveAssemblyReference.cache
+C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.Abstractions.dll
+C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.Routing.dll

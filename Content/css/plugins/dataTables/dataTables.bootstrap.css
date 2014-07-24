@@ -187,7 +187,7 @@ table.dataTable.display tbody tr.odd:hover,
 table.dataTable.display tbody tr.even:hover{
   background-color: #f0f4fc;
 }
-
+/*
 #candidatos_wrapper{
     width:800px;
 }
@@ -198,7 +198,7 @@ table.dataTable.display tbody tr.even:hover{
 
 #reclutadores_wrapper {
     width:800px;
-}
+}*/
 
 #candidatos_length ,#candidatos_filter,
 #tecnologias_length,  #tecnologias_filter,

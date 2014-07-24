@@ -3,62 +3,62 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script src="@Url.Content("~/Scripts/CreateCandidato.js")"></script>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">Editando candidato...</div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="">
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
                             @Html.ValidationSummary(true, "Campos con valores no validos.")
                              <form role="form">
-                                 <div class="form-group">
+                                 <div class="col-xs-6 form-group">
                                      @Html.LabelFor(model => model.CURP)
                                      @Html.TextBoxFor(model => model.CURP, new { @class = "form-control", @readOnly="true" })
                                      @Html.ValidationMessageFor(model => model.CURP)
                                  </div>
-                                 <div class="form-group">
+                                 <div class="col-xs-6 form-group">
                                  </div>
-                                 <div class="form-group">
+                                 <div class="col-xs-6 form-group">
                                      @Html.LabelFor(model => model.persona.nombre)
-                                     @Html.TextBoxFor(model => model.persona.nombre, new { @class = "form-control" })
+                                     @Html.TextBoxFor(model => model.persona.nombre, new { @class = "form-control", @onfocus="javascript:eliminarEspacios(this)" })
                                      @Html.ValidationMessageFor(model => model.persona.nombre)
                                  </div>
-                                 <div class="form-group">
+                                 <div class="col-xs-6 form-group">
                                      @Html.LabelFor(model => model.persona.apePaterno)
-                                     @Html.TextBoxFor(model => model.persona.apePaterno, new { @class = "form-control" })
+                                     @Html.TextBoxFor(model => model.persona.apePaterno, new { @class = "form-control", @onfocus="javascript:eliminarEspacios(this)" })
                                      @Html.ValidationMessageFor(model => model.persona.apePaterno)
                                  </div>
-                                 <div class="form-group">
+                                 <div class="col-xs-6 form-group">
                                      @Html.LabelFor(model => model.persona.apeMaterno)
-                                     @Html.TextBoxFor(model => model.persona.apeMaterno, new { @class = "form-control" })
+                                     @Html.TextBoxFor(model => model.persona.apeMaterno, new { @class = "form-control", @onfocus="javascript:eliminarEspacios(this)" })
                                      @Html.ValidationMessageFor(model => model.persona.apeMaterno)
                                  </div>
-                                 <div class="form-group">
+                                 <div class="col-xs-6 form-group">
                                      @Html.LabelFor(model => model.RFC)
-                                     @Html.TextBoxFor(model => model.RFC, new { @class = "form-control" })
+                                     @Html.TextBoxFor(model => model.RFC, new { @class = "form-control", @onfocus="javascript:eliminarEspacios(this)" })
                                      @Html.ValidationMessageFor(model => model.RFC)
                                  </div>
-                                 <div class="form-group">
+                                 <div class="col-xs-6 form-group">
                                      @Html.LabelFor(model => model.email)
-                                     @Html.TextBoxFor(model => model.email, new { @class = "form-control" })
+                                     @Html.TextBoxFor(model => model.email, new { @class = "form-control", @onfocus="javascript:eliminarEspacios(this)" })
                                      @Html.ValidationMessageFor(model => model.email)
                                  </div>
-                                 <div class="form-group">
+                                 <div class="col-xs-6 form-group">
                                      @Html.LabelFor(model => model.telefono)
-                                     @Html.TextBoxFor(model => model.telefono, new { @class = "form-control" })
+                                     @Html.TextBoxFor(model => model.telefono, new { @class = "form-control", @onfocus="javascript:eliminarEspacios(this)" })
                                      @Html.ValidationMessageFor(model => model.telefono)
                                  </div>
-                                 <div class="form-group" id="palabrasClave">
+                                 <div class="col-xs-6 form-group" id="palabrasClave">
                                      @Html.LabelFor(model => model.palabrasClave)
-                                     @Html.TextAreaFor(model => model.palabrasClave, new { @class = "form-control"})
+                                     @Html.TextAreaFor(model => model.palabrasClave, new { @class = "form-control", @onfocus="javascript:eliminarEspacios(this)"})
                                      @Html.ValidationMessageFor(model => model.palabrasClave)
                                  </div>
-                                 <div class="form-group" id="tecnologias">
+                                 <div class="col-xs-6 form-group" id="tecnologias">
                                      <label>Tecnologías</label>
                                       @{
                                           List<MvcApplication6.Models.tecnologiaCandidato> tecs =  ViewBag.tecnologias;

@@ -1305,7 +1305,7 @@ th.visible-print,td.visible-print{display:table-cell!important}
 
 /*Form control*/
 .form-control{
-    display:block;
+    display:inline;
     width:100%;
     height:34px;
     padding:6px 12px;

@@ -9,3 +9,8 @@ function aMinusculas(elemento) {
     var val = elemento.value;
     elemento.value = val.toLowerCase().trim();
 }
+
+function eliminarEspacios(elemento) {
+    var val = elemento.value;
+    elemento.value = val.trim();
+}

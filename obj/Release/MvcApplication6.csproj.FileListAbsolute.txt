@@ -1,16 +1,18 @@
+C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\EntityFramework.SqlServer.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\MvcApplication6.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\MvcApplication6.pdb
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\EntityFramework.dll
-C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\EntityFramework.SqlServer.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\Newtonsoft.Json.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Net.Http.Formatting.dll
+C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.Abstractions.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.Helpers.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.Http.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.Http.WebHost.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.Mvc.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.Razor.dll
+C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.Routing.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.WebPages.Deployment.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.WebPages.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.WebPages.Razor.dll
@@ -28,6 +30,3 @@ C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplic
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.WebPages.Razor.xml
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\obj\Release\MvcApplication6.dll
 C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\obj\Release\MvcApplication6.pdb
-C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\obj\Release\MvcApplication6.csprojResolveAssemblyReference.cache
-C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.Abstractions.dll
-C:\Users\Usuario\documents\visual studio 2012\Projects\MvcApplication6\MvcApplication6\bin\System.Web.Routing.dll

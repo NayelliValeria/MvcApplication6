@@ -341,6 +341,7 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\perfil1.pubxml" />
     <None Include="Properties\PublishProfiles\perfil2.pubxml" />
+    <Content Include="Views\Reclutador\Delete.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

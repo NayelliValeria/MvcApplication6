@@ -58,22 +58,34 @@ namespace MvcApplication6.Controllers
         //Eliminar reclurador
         public ActionResult Delete( int? id) 
         {
-            var delete = db.reclutador.Where(b => b.idReclutador == id).Single();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var delete = db.reclutador.Where(b => b.idReclutador == id).Include(b=>b.persona).Single();
             return View(delete);
         }
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            var delete = db.reclutador.Where(b => b.idReclutador == id).Single();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var delete = db.reclutador.Where(b => b.idReclutador == id).Include(b => b.persona).Single();
             try
             {
                 db.Entry(delete).State = EntityState.Deleted;
                 db.SaveChanges();
                 return RedirectToAction("Details");
             }
-            catch {
-                ModelState.AddModelError("","El reclutador no se ha podido eliminar correctamente, por favor intente nuevamente.");
-                return View(delete);
+            catch (DbUpdateException)
+            {
+                var del = db.reclutador.Where(b => b.idReclutador == id).Include(b => b.persona).Single();
+                ModelState.AddModelError("", "El reclutador no ha podido eliminarse debido a que cuenta con candidatos registrados.");
+                return View(del);
+            }
+            catch
+            {
+                var del = db.reclutador.Where(b => b.idReclutador == id).Include(b => b.persona).Single();
+                ModelState.AddModelError("", "Ha ocurrido un error al eliminar al reclutador, por favor intente nuevamente.");
+                return View(del);
             }
         }
 
